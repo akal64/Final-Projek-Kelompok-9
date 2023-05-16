@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 250e51005d556b34ba20c6863cb4261c
+guid: 1b4f857c4a5fa184cbbf8e0befc93b0d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - meshFilter: {instanceID: 0}
-  - computeShader: {fileID: 7200000, guid: e4cfa8cc3312269428349b13112ba176, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
