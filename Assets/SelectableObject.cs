@@ -4,42 +4,55 @@ using UnityEngine;
 
 public class SelectableObject : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer spriteRenderer;
+    // Simpan referensi ke komponen SpriteRenderer
+    private SpriteRenderer spriteRenderer;
+    Vector2 targetposition;
+
+    // Menyimpan status seleksi objek
     private bool isSelected = false;
+
+    private void Start()
+    {
+        // Dapatkan referensi ke komponen SpriteRenderer
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
-        // Cek jika objek dipilih
+        // Cek jika objek sedang diseleksi
         if (isSelected == true)
         {
-
             if (Input.GetMouseButtonDown(0))
             {
-                // Konversi posisi mouse dari layar menjadi posisi dalam dunia game
-                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                // Update posisi objek sesuai dengan posisi mouse
-                transform.position = Vector2.MoveTowards(transform.position, mousePosition, 5f * Time.deltaTime);
-                Debug.Log(transform.position);
+                // Perbarui posisi objek mengikuti posisi pointer mouse
+                targetposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             }
+            if (new Vector2(transform.position.x, transform.position.y) != targetposition)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetposition, 5f * Time.deltaTime);
+
+            }
+
         }
     }
 
     public void OnMouseDown()
     {
-        // Toggle status seleksi objek
+        // Ubah status seleksi objek
         isSelected = true;
 
-        // Ganti warna sprite saat objek di-klik dan diseleksi
-        if (isSelected)
-        {
-            spriteRenderer.color = Color.red;
-            Debug.Log("Objek terselek");
-        }
-        else
-        {
-            spriteRenderer.color = Color.white;
-            Debug.Log("Obejk tidak terselek");
-        }
+        // Ganti warna sprite saat objek di-klik
+        spriteRenderer.color = Color.white;
+    }
+
+    public void DeselectObject()
+    {
+        // Ubah status seleksi objek
+        isSelected = false;
+
+        // Ganti warna sprite saat objek tidak diseleksi
+        spriteRenderer.color = Color.gray;
     }
 
 }
