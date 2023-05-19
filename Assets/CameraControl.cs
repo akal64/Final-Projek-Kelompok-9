@@ -4,37 +4,26 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public Transform target;
-    public float smoothTime = 0.3f;
-    public float maxDistance = 5f;
-    public float minY = -55f;
-    public float maxY = 54f;
-    
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField] Transform target;  // Objek yang ingin diikuti kamera
+    public float smoothSpeed = 0.5f;  // Kecepatan pergerakan kamera
+    public Vector2 offset;  // Offset antara kamera dan objek diikuti
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (target != null)
         {
-            Vector3 targetPos = target.position;
-            Vector3 cameraPos = transform.position;
-            float distanceX = Mathf.Abs(targetPos.x - cameraPos.x);
-            float distanceY = Mathf.Abs(targetPos.y - cameraPos.y);
-            
-            if (distanceX > maxDistance || distanceY > maxDistance)
-            {
-                Vector3 desiredPos = new Vector3(targetPos.x, targetPos.y, cameraPos.z);
-                desiredPos.x = 0f; // x position always 0
-                desiredPos.y = Mathf.Clamp(desiredPos.y, minY, maxY); // limit y position
-                transform.position = Vector3.SmoothDamp(cameraPos, desiredPos, ref velocity, smoothTime);
-            }
+            Vector2 currentposition = new Vector2 (transform.position.x, transform.position.y);
+            currentposition.x = 0;
+            // Tentukan posisi target
+            Vector2 targetPosition = target.position;
+
+            // Interpolasi posisi kamera untuk menghasilkan pergerakan yang lebih halus
+            Vector2 smoothedPosition = Vector2.Lerp(currentposition, targetPosition, smoothSpeed * Time.deltaTime);
+
+            // Atur posisi kamera ke posisi yang diinterpolasi
+            transform.position = smoothedPosition;
+            Debug.Log(transform.position);
         }
-    }
-    
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, new Vector3(maxDistance * 2, maxDistance * 2, 0));
     }
 
 }

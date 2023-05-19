@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MouseInputManager : MonoBehaviour
 {
-    [SerializeField] SelectableObject SelectableObject;
+    // Menyimpan referensi ke objek yang sedang diseleksi
+    [SerializeField] SelectableObject selectedObject;
+
     private void Update()
     {
         // Cek jika tombol kiri mouse ditekan
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             // Konversi posisi mouse dari layar menjadi posisi dalam dunia game
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -25,11 +27,27 @@ public class MouseInputManager : MonoBehaviour
                 // Cek jika objek memiliki komponen SelectableObject
                 if (selectableObject != null)
                 {
-                    // Lakukan seleksi objek
-                    selectableObject.OnMouseDown();
+                    // Cek jika objek belum diseleksi sebelumnya
+                    if (selectedObject == null)
+                    {
+                        // Lakukan seleksi objek
+                        selectedObject = selectableObject;
+                        selectedObject.OnMouseDown();
+                    }
                 }
             }
         }
-    }
 
+        // Cek jika tombol kiri mouse dilepas
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Cek jika ada objek yang sedang diseleksi
+            if (selectedObject != null)
+            {
+                // Hentikan seleksi objek
+                selectedObject.DeselectObject();
+                selectedObject = null;
+            }
+        }
+    }
 }
