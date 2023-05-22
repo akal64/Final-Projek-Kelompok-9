@@ -3,14 +3,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-	[SerializeField] private float speed = 10f;
+	[SerializeField] private float moveSpeed = 10f;
+	[SerializeField] private Rigidbody2D rb;
 
-	private void Update () {
-		float horizontalInput = Input.GetAxis("Horizontal");
-		float verticalInput = Input.GetAxis("Vertical");
+	private Vector2 movementDirection;
 
-		Vector3 movement = new Vector3(horizontalInput, verticalInput, 0);
+	void Update () {
 
-		transform.localPosition += movement * Time.deltaTime * speed;
+		float moveX = Input.GetAxisRaw("Horizontal");
+		float moveY = Input.GetAxisRaw("Vertical");
+
+		movementDirection = new Vector2(moveX, moveY).normalized;
+	}
+
+	void FixedUpdate () {
+		rb.velocity = movementDirection * moveSpeed;
 	}
 }
