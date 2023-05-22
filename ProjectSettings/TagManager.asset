@@ -50,3 +50,6 @@ TagManager:
   - name: player
     uniqueID: 3073997563
     locked: 0
+  - name: terrainFront
+    uniqueID: 2492547881
+    locked: 0
