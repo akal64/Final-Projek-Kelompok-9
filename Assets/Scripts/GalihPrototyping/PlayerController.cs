@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+	[Header("Player Stat")]
 	[SerializeField] private float moveSpeed = 10f;
-	[SerializeField] private Rigidbody2D rb;
+
+	[Header("Player Component")]
+	[SerializeField] private Rigidbody2D playerRigidbody2D;
 
 	private Vector2 movementDirection;
 
@@ -17,6 +19,6 @@ public class PlayerController : MonoBehaviour
 	}
 
 	void FixedUpdate () {
-		rb.velocity = movementDirection * moveSpeed;
+		playerRigidbody2D.velocity = movementDirection * moveSpeed;
 	}
 }
