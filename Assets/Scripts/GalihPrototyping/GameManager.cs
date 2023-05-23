@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	[SerializeField] private GameSceneManager gameSceneManager;
+
+	private void Start () {
+		gameSceneManager.Initialize();
+	}
 
 }
