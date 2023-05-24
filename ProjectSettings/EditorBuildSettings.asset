@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ZaidanPrototype/UIDesign/MainMenu.unity
+    guid: 03b3abb305b1e084c92e301d9d4c8e82
+  - enabled: 1
     path: Assets/Scenes/GalihPrototyping/Main.unity
     guid: 2f2874056ac27be40b7cad9b86ed1033
   - enabled: 1
