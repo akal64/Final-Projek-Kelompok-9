@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,13 +13,14 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private GameObject activeModuleGameObject;
 
-	[SerializeField] private int previousModuleIndex = 0;
-	[SerializeField] private int activeModuleIndex = 0;
-	[SerializeField] private int nextModuleIndex = 0;
+	private int previousModuleIndex = 0;
+	private int activeModuleIndex = 0;
+	private int nextModuleIndex = 0;
 
 
 	[Header("Player Component")]
 	[SerializeField] private Rigidbody2D playerRigidbody2D;
+	[SerializeField] private GameObject player;
 
 	private Vector2 movementDirection;
 
@@ -67,6 +69,12 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate () {
 		playerRigidbody2D.velocity = movementDirection * moveSpeed;
+
+		if (movementDirection.x > 0) {
+			player.transform.rotation = Quaternion.Euler(0, 180, 0);
+		} else if (movementDirection.x < 0) {
+			player.transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
 	}
 
 	private void SelectModule (int index) {

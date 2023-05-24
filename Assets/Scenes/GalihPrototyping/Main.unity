@@ -4567,7 +4567,11 @@ MonoBehaviour:
   modulesHolder: {fileID: 2117565681}
   modulesList: []
   activeModuleGameObject: {fileID: 0}
+  previousModuleIndex: 0
+  activeModuleIndex: 0
+  nextModuleIndex: 0
   playerRigidbody2D: {fileID: 1672094312}
+  player: {fileID: 1672094308}
 --- !u!70 &1672094311
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
