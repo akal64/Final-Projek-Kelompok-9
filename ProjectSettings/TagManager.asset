@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - InteractableTrash
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - UI
   - Background
   - Terrain
-  - 
+  - Trash
   - 
   - Loader
   - 
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 3073997563
+    locked: 0
+  - name: trash
+    uniqueID: 2325514895
     locked: 0
   - name: terrainFront
     uniqueID: 2492547881
