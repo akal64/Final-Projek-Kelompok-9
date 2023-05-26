@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject activeModuleGameObject;
 
-    [SerializeField] private int previousModuleIndex = 0;
-    [SerializeField] private int activeModuleIndex = 0;
-    [SerializeField] private int nextModuleIndex = 0;
+    private int previousModuleIndex = 0;
+    private int activeModuleIndex = 0;
+    private int nextModuleIndex = 0;
+
+    [SerializeField] ClawModule clawModule;
 
 
     [Header("Player Component")]
@@ -51,6 +53,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SelectModule(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+
+            if (activeModuleIndex == 0) {
+                Debug.Log("No Module Actived");
+            } else if(activeModuleIndex == 1) {
+				clawModule.Interact();
+			}
         }
 
         // if (Input.GetKeyDown(KeyCode.Alpha2))
