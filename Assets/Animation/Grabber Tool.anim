@@ -20,18 +20,18 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 2.157, y: -2.548, z: 0}
-        inSlope: {x: 3.038, y: -0.18499994, z: 0}
-        outSlope: {x: 3.038, y: -0.18499994, z: 0}
+        value: {x: -3.9, y: -2.14, z: 0}
+        inSlope: {x: -2.913, y: 0.32900012, z: 0}
+        outSlope: {x: -2.913, y: 0.32900012, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: 5.195, y: -2.733, z: 0}
-        inSlope: {x: 3.038, y: -0.18499994, z: 0}
-        outSlope: {x: 3.038, y: -0.18499994, z: 0}
+        value: {x: -6.813, y: -1.811, z: 0}
+        inSlope: {x: -2.913, y: 0.32900012, z: 0}
+        outSlope: {x: -2.913, y: 0.32900012, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -84,18 +84,18 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 2.157
-        inSlope: 3.038
-        outSlope: 3.038
+        value: -3.9
+        inSlope: -2.913
+        outSlope: -2.913
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 5.195
-        inSlope: 3.038
-        outSlope: 3.038
+        value: -6.813
+        inSlope: -2.913
+        outSlope: -2.913
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -112,18 +112,18 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -2.548
-        inSlope: -0.18499994
-        outSlope: -0.18499994
+        value: -2.14
+        inSlope: 0.32900012
+        outSlope: 0.32900012
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -2.733
-        inSlope: -0.18499994
-        outSlope: -0.18499994
+        value: -1.811
+        inSlope: 0.32900012
+        outSlope: 0.32900012
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
