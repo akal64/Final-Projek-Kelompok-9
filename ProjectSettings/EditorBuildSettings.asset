@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ZaidanPrototype/UIDesign/MainMenu.unity
+    guid: 03b3abb305b1e084c92e301d9d4c8e82
+  - enabled: 1
+    path: Assets/Scenes/GalihPrototyping/Main.unity
+    guid: 2f2874056ac27be40b7cad9b86ed1033
+  - enabled: 1
+    path: Assets/Scenes/GalihPrototyping/Level 1.unity
+    guid: c2209a54eca7022458bf0729a87a4174
+  - enabled: 1
+    path: Assets/Scenes/GalihPrototyping/Level 2.unity
+    guid: d5fe40e3e7683e44780e9291be3963a4
+  - enabled: 1
+    path: Assets/Scenes/GalihPrototyping/Bridge 1-2.unity
+    guid: 737b43e9b31a0b34d82aa6200e1c9e26
   m_configObjects: {}
