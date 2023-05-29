@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +11,12 @@ public class PlayerControl : MonoBehaviour
 	[Header("Player Reference")]
 	[SerializeField] private GameObject playerGameObject;
 	[SerializeField] private Rigidbody2D droneRigidbody2D;
-	[SerializeField] private GameObject clawParent;
+	//[SerializeField] private GameObject clawParent;
 	[SerializeField] private Camera mainCamera;
 
+	[SerializeField] private Vector3 mouseWorldPosition;
+
 	private PlayerInputMap _playerInputMap;
-	private Vector2 mousePosition;
 
 	private void Start () {
 		Initialize();
@@ -34,8 +34,6 @@ public class PlayerControl : MonoBehaviour
 
 		// Claw Movement Subscribe
 		_playerInputMap.Gameplay.ClawMovement.performed += ctx => OnClawMovement(ctx);
-		_playerInputMap.Gameplay.ClawMovement.canceled += ctx => OnClawMovement(ctx);
-
 
 		// Player Action Subscribe
 		_playerInputMap.Gameplay.Interact.performed += ctx => OnInteract();
@@ -49,12 +47,14 @@ public class PlayerControl : MonoBehaviour
 
 
 		playerMovement.SetDroneRigidbody2D(droneRigidbody2D);
+		//clawMovement.SetRotatorPoint(clawParent);
 	}
 
 
 	private void Update () {
-		clawMovement.ReferenceCursorPosition(mousePosition);
+		clawMovement.ReferenceCursorPosition(mouseWorldPosition);
 	}
+
 
 	private void OnDisable () {
 
@@ -67,7 +67,6 @@ public class PlayerControl : MonoBehaviour
 
 		// Claw Movement UnSubscribe
 		_playerInputMap.Gameplay.ClawMovement.performed -= ctx => OnClawMovement(ctx);
-		_playerInputMap.Gameplay.ClawMovement.canceled -= ctx => OnClawMovement(ctx);
 
 		// Player Action UnSubscribe
 		_playerInputMap.Gameplay.Interact.performed -= ctx => OnInteract();
@@ -95,16 +94,25 @@ public class PlayerControl : MonoBehaviour
 
 	private void OnClawMovement (InputAction.CallbackContext ctx) {
 		// TODO Track Mouse Cursor Position
-		if (ctx.performed) {
 
-			clawMovement.SetClawMoveActiveStatus(true);
-			Vector3 direction = ctx.ReadValue<Vector2>();
-			direction.z = mainCamera.nearClipPlane;
-			mousePosition = mainCamera.ScreenToWorldPoint(direction);
+		var mousePosition = ctx.ReadValue<Vector2>();
+		mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+		mouseWorldPosition.z = 0;
 
-		} else if (ctx.canceled) {
-			clawMovement.SetClawMoveActiveStatus(false);
+
+		float playerX = playerGameObject.transform.position.x;
+		float mouseWorldX = mouseWorldPosition.x;
+
+
+		if (mouseWorldX < playerX) {
+
+			RotatePlayerLeft();
+
+		} else if (mouseWorldX > playerX) {
+
+			RotatePlayerRight();
 		}
+
 	}
 
 	private void OnInteract () {
@@ -134,4 +142,13 @@ public class PlayerControl : MonoBehaviour
 	private void SetDroneMoveDirection(Vector2 direction) {
 		playerMovement.SetDirection(direction);
 	}
+
+	private void RotatePlayerLeft () {
+		playerGameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+	}
+
+	private void RotatePlayerRight () {
+		playerGameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+	}
+
 }
