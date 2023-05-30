@@ -11,10 +11,13 @@ public class PlayerControl : MonoBehaviour
 	[Header("Player Reference")]
 	[SerializeField] private GameObject playerGameObject;
 	[SerializeField] private Rigidbody2D droneRigidbody2D;
+
 	//[SerializeField] private GameObject clawParent;
+
 	[SerializeField] private Camera mainCamera;
 
 	[SerializeField] private Vector3 mouseWorldPosition;
+	[SerializeField] private Vector3 mouseInputPosition;
 
 	private PlayerInputMap _playerInputMap;
 
@@ -55,6 +58,7 @@ public class PlayerControl : MonoBehaviour
 
 
 	private void Update () {
+		ConvertMouseToWorldPosition();
 		clawMovement.ReferenceCursorPosition(mouseWorldPosition);
 	}
 
@@ -98,10 +102,7 @@ public class PlayerControl : MonoBehaviour
 	private void OnClawMovement (InputAction.CallbackContext ctx) {
 		// TODO Track Mouse Cursor Position
 
-		var mousePosition = ctx.ReadValue<Vector2>();
-		mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-		mouseWorldPosition.z = 0;
-
+		mouseInputPosition = ctx.ReadValue<Vector2>();
 
 		float playerX = playerGameObject.transform.position.x;
 		float mouseWorldX = mouseWorldPosition.x;
@@ -153,5 +154,11 @@ public class PlayerControl : MonoBehaviour
 
 	private void RotatePlayerRight () {
 		playerGameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+	}
+
+	private void ConvertMouseToWorldPosition () {
+		mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseInputPosition);
+		mouseWorldPosition.z = 0;
+
 	}
 }
