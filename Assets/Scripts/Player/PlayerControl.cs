@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] private Camera mainCamera;
 
 	[SerializeField] private Vector3 mouseWorldPosition;
+	[SerializeField] private Vector3 inputMousePosition;
 
 	private PlayerInputMap _playerInputMap;
 
@@ -52,6 +53,7 @@ public class PlayerControl : MonoBehaviour
 
 
 	private void Update () {
+		MouseWorldPosition();
 		clawMovement.ReferenceCursorPosition(mouseWorldPosition);
 	}
 
@@ -95,10 +97,7 @@ public class PlayerControl : MonoBehaviour
 	private void OnClawMovement (InputAction.CallbackContext ctx) {
 		// TODO Track Mouse Cursor Position
 
-		var mousePosition = ctx.ReadValue<Vector2>();
-		mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-		mouseWorldPosition.z = 0;
-
+		inputMousePosition = ctx.ReadValue<Vector2>();
 
 		float playerX = playerGameObject.transform.position.x;
 		float mouseWorldX = mouseWorldPosition.x;
@@ -151,4 +150,11 @@ public class PlayerControl : MonoBehaviour
 		playerGameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 	}
 
+<<<<<<< Updated upstream
+=======
+	private void MouseWorldPosition () {
+		mouseWorldPosition = mainCamera.ScreenToWorldPoint(inputMousePosition);
+		mouseWorldPosition.z = 0;
+	}
+>>>>>>> Stashed changes
 }
