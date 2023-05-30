@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - InteractableTrash
+  - ClawTip
+  - InteractableObject
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -56,4 +59,7 @@ TagManager:
     locked: 0
   - name: terrainFront
     uniqueID: 2492547881
+    locked: 0
+  - name: object
+    uniqueID: 953874927
     locked: 0
