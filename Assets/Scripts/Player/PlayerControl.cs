@@ -19,9 +19,6 @@ public class PlayerControl : MonoBehaviour
 
 	private PlayerInputMap _playerInputMap;
 
-	//private bool isPickingObject = false;
-	//private GameObject pickedObject;
-
 	private void Start () {
 		Initialize();
 	}
@@ -117,14 +114,13 @@ public class PlayerControl : MonoBehaviour
 
 	}
 
-    private void OnInteract () {
-        // TODO Enable Interact UI 
-    }
+	private void OnInteract () {
+		// TODO Enable Interact UI ??
+	}
 
 	private void OnPickObject () {
-        // TODO Pick Object in Collison Area
-
-    }
+		// TODO Pick Object in Collison Area
+	}
 
 	private void OnThrowObject () {
 		// TODO Throw Object if we picked one
@@ -154,9 +150,11 @@ public class PlayerControl : MonoBehaviour
 		playerGameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 	}
 
+<<<<<<< Updated upstream
+=======
 	private void MouseWorldPosition () {
 		mouseWorldPosition = mainCamera.ScreenToWorldPoint(inputMousePosition);
 		mouseWorldPosition.z = 0;
 	}
-
+>>>>>>> Stashed changes
 }
