@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] private PlayerMovement playerMovement;
 	[SerializeField] private ClawMovement clawMovement;
 	[SerializeField] private DroneAction droneAction;
+	[SerializeField] private ClawAction clawAction;
 
 	[Header("Player Reference")]
 	[SerializeField] private GameObject playerGameObject;
