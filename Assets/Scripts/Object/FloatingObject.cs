@@ -8,7 +8,7 @@ public class FloatingObject : MonoBehaviour, Interactable {
     public string InteractionObject => throw new System.NotImplementedException();
 
     public bool Interact(Interactor interactor) {
-        Debug.Log("Object!");
+        Debug.Log("You interact the object");
         return true;
     }
 }

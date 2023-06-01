@@ -496,6 +496,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3010949978646367199, guid: 2775ff18bc99ee5488ab73a301d2af11, type: 3}
   m_PrefabInstance: {fileID: 393679726}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &393679732 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 398469846035730107, guid: 2775ff18bc99ee5488ab73a301d2af11, type: 3}
+  m_PrefabInstance: {fileID: 393679726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &419108773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767624358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.44, y: 0, z: 0}
+  m_LocalPosition: {x: 3.72, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1043,14 +1048,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae290ba027615194da4399d26e876e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 393679732}
   interactionPoint: {fileID: 767624359}
   interactionPointRadius: 0
   interactableMask:
     serializedVersion: 2
     m_Bits: 512
   objectFound: 0
-  xGizmos: 2.35
-  yGizmos: 2.35
+  xGizmos: 0.91
+  yGizmos: 2.18
 --- !u!1 &827140019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1355,7 @@ MonoBehaviour:
   playerMovement: {fileID: 1029555147}
   clawMovement: {fileID: 1835688864}
   droneAction: {fileID: 1029555149}
-  interactor: {fileID: 0}
+  interactor: {fileID: 767624361}
   playerGameObject: {fileID: 1029555143}
   droneRigidbody2D: {fileID: 1029555146}
   mainCamera: {fileID: 250263527}
