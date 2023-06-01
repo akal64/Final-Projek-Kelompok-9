@@ -8,6 +8,7 @@ TagManager:
   - ClawTip
   - InteractableObject
   - Button
+  - Trash
   layers:
   - Default
   - TransparentFX

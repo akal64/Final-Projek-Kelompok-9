@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,22 +13,13 @@ public class PlayerControl : MonoBehaviour
 	[Header("Player Reference")]
 	[SerializeField] private GameObject playerGameObject;
 	[SerializeField] private Rigidbody2D droneRigidbody2D;
-
-	//[SerializeField] private GameObject clawParent;
-
 	[SerializeField] private Camera mainCamera;
 
-	[SerializeField] private Vector3 mouseWorldPosition;
-	[SerializeField] private Vector3 mouseInputPosition;
-
+	private Vector3 mouseWorldPosition;
+	private Vector3 mouseInputPosition;
 	private PlayerInputMap _playerInputMap;
 
-	//private bool isPickingObject = false;
-	//private GameObject pickedObject;
-
-	private void Start () {
-		Initialize();
-	}
+	public Action PauseClicked;
 
 	public void Initialize () {
 
@@ -54,7 +46,8 @@ public class PlayerControl : MonoBehaviour
 
 
 		playerMovement.SetDroneRigidbody2D(droneRigidbody2D);
-		//clawMovement.SetRotatorPoint(clawParent);
+		clawAction.Initialize();
+
 	}
 
 
@@ -127,24 +120,23 @@ public class PlayerControl : MonoBehaviour
     }
 
 	private void OnPickObject () {
-        // TODO Pick Object in Collison Area
-
+		clawAction.OnPickObject();
     }
 
 	private void OnThrowObject () {
-		// TODO Throw Object if we picked one
+		clawAction.OnThrowObject();
 	}
 
 	private void OnDropObject () {
-		// TODO Drop Object if we picked one
+		clawAction.OnDropObject();
 	}
 
 	private void OnProcessTrash () {
-		// TODO If we pick trash == true, we can process it to get gold?
+		clawAction.OnProcessTrash();
 	}
 
 	private void OnPause () {
-		// TODO Pause the game
+		PauseClicked.Invoke();
 	}
 
 	private void SetDroneMoveDirection(Vector2 direction) {
