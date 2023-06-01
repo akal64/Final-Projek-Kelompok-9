@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] private PlayerMovement playerMovement;
 	[SerializeField] private ClawMovement clawMovement;
 	[SerializeField] private DroneAction droneAction;
+	[SerializeField] private Interactor interactor;
 
 	[Header("Player Reference")]
 	[SerializeField] private GameObject playerGameObject;
@@ -120,7 +121,9 @@ public class PlayerControl : MonoBehaviour
 	}
 
     private void OnInteract () {
-        // TODO Enable Interact UI 
+        // TODO Enable Interact UI
+
+
     }
 
 	private void OnPickObject () {
