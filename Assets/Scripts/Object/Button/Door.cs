@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -10,7 +9,11 @@ public class Door : MonoBehaviour
 	private bool isSwitchCollide = false;
 	private Quaternion targetRotation;
 
-	private void Awake () {
+	private void Start () {
+		Intialize();
+	}
+
+	public void Intialize () {
 		targetRotation = rotatingPoint.transform.rotation;
 	}
 
@@ -18,9 +21,6 @@ public class Door : MonoBehaviour
 
 		Quaternion newRotation = Quaternion.RotateTowards(rotatingPoint.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 		rotatingPoint.transform.rotation = newRotation;
-
-		Debug.Log(isDoorOpen);
-		Debug.Log(isSwitchCollide);
 
 		if (isSwitchCollide && !isDoorOpen) {
 			OpenDoor();
