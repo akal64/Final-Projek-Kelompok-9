@@ -6,6 +6,7 @@ public class ClawAction : MonoBehaviour
 	[SerializeField] private Transform grabPoint;
 	[SerializeField] private string layerName;
 	[SerializeField] private string trashTag;
+	[SerializeField] private float throwForce;
 
 	private int layerIndex;
 	private bool isTrash = false;
@@ -13,6 +14,8 @@ public class ClawAction : MonoBehaviour
 	private float rayDistance;
 	private GameObject pickedGameObject;
 	private RaycastHit2D hitInfo;
+
+	private FloatingObject floatingObject;
 
 	public void Initialize () {
 		layerIndex = LayerMask.NameToLayer(layerName);
@@ -33,7 +36,10 @@ public class ClawAction : MonoBehaviour
 	public void OnPickObject () {
 		if (isPickable && pickedGameObject == null) {
 			pickedGameObject = hitInfo.collider.gameObject;
-			pickedGameObject.GetComponent<Rigidbody2D>().isKinematic = true;	
+
+			floatingObject = pickedGameObject.GetComponent<FloatingObject>();
+			floatingObject.SetStateBeingCarried();
+
 			pickedGameObject.transform.position = grabPoint.position;
 			pickedGameObject.transform.SetParent(transform);
 			
@@ -43,17 +49,31 @@ public class ClawAction : MonoBehaviour
 
 
 	public void OnDropObject () {
+
 		if (pickedGameObject != null) {
-			pickedGameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+
+			floatingObject.SetStateIdle();
+
 			pickedGameObject.transform.SetParent(null);
 			pickedGameObject = null;
 			
 			CheckIfTrash();
+			ClearFloatingObjectRef();
 		}
 	}
 
 	public void OnThrowObject () {
-		Debug.Log("Throw Object");
+
+		if (pickedGameObject != null) {
+
+			floatingObject.SetStateBeingThrown();
+			floatingObject.SetVelocity(transform.right * throwForce);
+			pickedGameObject.transform.SetParent(null);
+			pickedGameObject = null;
+
+			CheckIfTrash();
+			ClearFloatingObjectRef();
+		}
 	}
 
 	public void OnProcessTrash () {
@@ -65,10 +85,16 @@ public class ClawAction : MonoBehaviour
 	}
 
 	private void CheckIfTrash () {
+
 		if (pickedGameObject != null && pickedGameObject.CompareTag(trashTag)) {
 			isTrash = true;
 		} else {
 			isTrash = false;
 		}
+
+	}
+
+	private void ClearFloatingObjectRef () {
+		floatingObject = null;
 	}
 }
