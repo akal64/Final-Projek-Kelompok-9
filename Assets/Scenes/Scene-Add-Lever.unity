@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -486,6 +486,17 @@ Transform:
   m_Father: {fileID: 1938161261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470240461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 630481692560314932, guid: 9b62da9c4bb79204ab21ae5232950765, type: 3}
+  m_PrefabInstance: {fileID: 3983535644920888430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96105a6006e27004294872d4802af1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &475866487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2111,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5788420237294117549, guid: 2a67c2307af006f4cafa579d13bf1380, type: 3}
+      propertyPath: slidingDoor
+      value: 
+      objectReference: {fileID: 470240461}
     - target: {fileID: 5788420237294117550, guid: 2a67c2307af006f4cafa579d13bf1380, type: 3}
       propertyPath: m_RootOrder
       value: 9
