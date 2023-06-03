@@ -116,7 +116,7 @@ public class PlayerControl : MonoBehaviour
     private void OnInteract () {
         // TODO Enable Interact UI
 
-
+		clawAction.OnInteract();
     }
 
 	private void OnPickObject () {

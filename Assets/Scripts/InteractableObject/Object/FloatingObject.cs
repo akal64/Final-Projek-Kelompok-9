@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class FloatingObject : MonoBehaviour
 {
-	private enum ObjectState { Idle, BeingCarried, BeingThrown }
 
-	[SerializeField] private ObjectState objectState;
 	[SerializeField] private Rigidbody2D objectRigidbody2D;
 
 	private void Start () {
@@ -12,21 +10,18 @@ public class FloatingObject : MonoBehaviour
 	}
 
 	public void SetStateIdle () {
-		objectState = ObjectState.Idle;
 		SetKinematic(true);
 
 		//objectRigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 	}
 
 	public void SetStateBeingCarried () {
-		objectState = ObjectState.BeingCarried;
 		SetKinematic(true);
 
 		//objectRigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
 	}
 
 	public void SetStateBeingThrown () {
-		objectState = ObjectState.BeingThrown;
 		SetKinematic(false);
 
 		//objectRigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;

@@ -10,7 +10,7 @@ public class Lever : MonoBehaviour
 
 	private Quaternion targetRotation;
 	private bool isLeverActive = false;
-	[SerializeField] private bool isLeverPulled = false;
+	private bool isLeverPulled = false;
 
 
 	private void Start () {
@@ -44,6 +44,16 @@ public class Lever : MonoBehaviour
 		}
 
 		IndicatorVisual(isLeverPulled);
+
+	}
+
+	public void OnInteract () {
+
+		if (isLeverPulled) {
+			isLeverPulled = false;
+		} else if (!isLeverPulled) {
+			isLeverPulled = true;
+		}
 
 	}
 

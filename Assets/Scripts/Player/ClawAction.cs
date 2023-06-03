@@ -11,6 +11,7 @@ public class ClawAction : MonoBehaviour
 	private int layerIndex;
 	private bool isTrash = false;
 	private bool isPickable = false;
+	private bool isInteractable = false;
 	private float rayDistance;
 	private GameObject pickedGameObject;
 	private RaycastHit2D hitInfo;
@@ -30,7 +31,24 @@ public class ClawAction : MonoBehaviour
 			isPickable = false;
 		}
 
-		Debug.DrawRay(rayPoint.position, transform.right * rayDistance, Color.red);
+		if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Interactable")) {
+			isInteractable = true;
+		} else {
+			isInteractable = false;
+		}
+
+	}
+
+	public void OnInteract () {
+		if (hitInfo.collider != null && isInteractable) {
+
+			Lever lever = hitInfo.collider.gameObject.GetComponent<Lever>();
+
+			if(lever != null) {
+				lever.OnInteract();
+			}
+
+		}
 	}
 
 	public void OnPickObject () {
