@@ -9,6 +9,7 @@ TagManager:
   - InteractableObject
   - Button
   - Trash
+  - Floating Object
   layers:
   - Default
   - TransparentFX
