@@ -850,6 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 1029555148}
+  surfaceBuildIndex: 1
 --- !u!1 &1433725882
 GameObject:
   m_ObjectHideFlags: 0
