@@ -426,7 +426,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2023450672}
+      - m_Target: {fileID: 902490177}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
         m_MethodName: setMasterVolume
         m_Mode: 1
@@ -1672,7 +1672,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2023450672}
+      - m_Target: {fileID: 902490177}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
         m_MethodName: setSFXVolume
         m_Mode: 1
@@ -1769,6 +1769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 902490176}
+  - component: {fileID: 902490177}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -1793,6 +1794,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &902490177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902490174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63b54b1953642b478000665c68acd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mixer: {fileID: 24100000, guid: d483e3ffeb2680345ae0e442d39c27c5, type: 2}
+  masterSlider: {fileID: 426268567}
+  SFXSlider: {fileID: 825698050}
+  BGMSlider: {fileID: 1405697525}
 --- !u!1 &907487317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,7 +1823,6 @@ GameObject:
   - component: {fileID: 907487323}
   - component: {fileID: 907487322}
   - component: {fileID: 907487321}
-  - component: {fileID: 907487320}
   - component: {fileID: 907487319}
   m_Layer: 5
   m_Name: Options Button
@@ -1847,8 +1863,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1752754085174913206, guid: d483e3ffeb2680345ae0e442d39c27c5, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: cef29ed25ecb6f24fba68f0cbbcb1f99, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1933,20 +1949,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &907487320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907487317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc36ed9a9474b6419171e21decb5eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonAnimation: {fileID: 907487321}
-  soundController: {fileID: 692435486}
 --- !u!95 &907487321
 Animator:
   serializedVersion: 5
@@ -1986,7 +1988,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2005,7 +2007,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_DisabledTrigger: Leave
   m_Interactable: 1
   m_TargetGraphic: {fileID: 907487323}
   m_OnClick:
@@ -2014,6 +2016,18 @@ MonoBehaviour:
       - m_Target: {fileID: 540979311}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: OptionButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 907487319}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3043,7 +3057,6 @@ GameObject:
   - component: {fileID: 1285392546}
   - component: {fileID: 1285392545}
   - component: {fileID: 1285392544}
-  - component: {fileID: 1285392543}
   - component: {fileID: 1285392542}
   m_Layer: 5
   m_Name: Exit Button
@@ -3084,8 +3097,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1752754085174913206, guid: d483e3ffeb2680345ae0e442d39c27c5, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: cef29ed25ecb6f24fba68f0cbbcb1f99, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3170,20 +3183,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1285392543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285392540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc36ed9a9474b6419171e21decb5eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonAnimation: {fileID: 1285392544}
-  soundController: {fileID: 692435486}
 --- !u!95 &1285392544
 Animator:
   serializedVersion: 5
@@ -3223,7 +3222,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3242,7 +3241,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_DisabledTrigger: Leave
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1285392546}
   m_OnClick:
@@ -3251,6 +3250,18 @@ MonoBehaviour:
       - m_Target: {fileID: 540979311}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: ExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 907487319}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3579,7 +3590,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2023450672}
+      - m_Target: {fileID: 902490177}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
         m_MethodName: setBGMVolume
         m_Mode: 1
@@ -3980,7 +3991,6 @@ GameObject:
   - component: {fileID: 1559397697}
   - component: {fileID: 1559397696}
   - component: {fileID: 1559397699}
-  - component: {fileID: 1559397701}
   - component: {fileID: 1559397700}
   m_Layer: 5
   m_Name: Play Button
@@ -4030,7 +4040,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4049,7 +4059,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_DisabledTrigger: Leave
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1559397697}
   m_OnClick:
@@ -4058,6 +4068,18 @@ MonoBehaviour:
       - m_Target: {fileID: 540979311}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 907487319}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4135,8 +4157,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1752754085174913206, guid: d483e3ffeb2680345ae0e442d39c27c5, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: cef29ed25ecb6f24fba68f0cbbcb1f99, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4221,20 +4243,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1559397701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559397694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc36ed9a9474b6419171e21decb5eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonAnimation: {fileID: 1559397699}
-  soundController: {fileID: 692435486}
 --- !u!1 &1575081127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5084,7 +5092,6 @@ GameObject:
   - component: {fileID: 2001582048}
   - component: {fileID: 2001582047}
   - component: {fileID: 2001582046}
-  - component: {fileID: 2001582045}
   - component: {fileID: 2001582044}
   m_Layer: 5
   m_Name: Credits Button
@@ -5125,8 +5132,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1752754085174913206, guid: d483e3ffeb2680345ae0e442d39c27c5, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: cef29ed25ecb6f24fba68f0cbbcb1f99, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5211,20 +5218,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2001582045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2001582042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc36ed9a9474b6419171e21decb5eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonAnimation: {fileID: 2001582046}
-  soundController: {fileID: 692435486}
 --- !u!95 &2001582046
 Animator:
   serializedVersion: 5
@@ -5264,7 +5257,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5283,7 +5276,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_DisabledTrigger: Leave
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2001582048}
   m_OnClick:
@@ -5292,6 +5285,18 @@ MonoBehaviour:
       - m_Target: {fileID: 540979311}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: CreditsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 907487319}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5349,7 +5354,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2023450670}
   - component: {fileID: 2023450671}
-  - component: {fileID: 2023450672}
   m_Layer: 5
   m_Name: Volume Slider
   m_TagString: Untagged
@@ -5406,22 +5410,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &2023450672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023450669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63b54b1953642b478000665c68acd14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mixer: {fileID: 24100000, guid: d483e3ffeb2680345ae0e442d39c27c5, type: 2}
-  masterSlider: {fileID: 426268567}
-  SFXSlider: {fileID: 825698050}
-  BGMSlider: {fileID: 1405697525}
 --- !u!1 &2145535927
 GameObject:
   m_ObjectHideFlags: 0
