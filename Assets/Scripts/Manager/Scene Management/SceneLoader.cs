@@ -10,6 +10,10 @@ public class SceneLoader : MonoBehaviour
 		Check(collision);
 	}
 
+	private void OnTriggerStay2D (Collider2D collision) {
+		Check(collision);
+	}
+
 	private void OnTriggerExit2D (Collider2D collision) {
 		Check(collision);
 	}
