@@ -5,16 +5,15 @@ public class GameManager : MonoBehaviour
 {
 
 	[SerializeField] private PlayerControl playerControl;
-	[SerializeField] private int surfaceBuildIndex;
-
-	private bool isFirstSceneIsLoaded = false;
+	[SerializeField] private string surfaceSceneName;
 
 	private void Awake () {
-		if (isFirstSceneIsLoaded == false) {
-			
-			SceneManager.LoadSceneAsync(SceneManager.GetSceneByBuildIndex(surfaceBuildIndex).name, LoadSceneMode.Additive);
-			isFirstSceneIsLoaded = true;
+		if (SceneManager.GetSceneByName(surfaceSceneName).isLoaded == false) {
+
+			SceneManager.LoadScene(surfaceSceneName, LoadSceneMode.Additive);
+
 		}
+
 	}
 
 	private void Start () {

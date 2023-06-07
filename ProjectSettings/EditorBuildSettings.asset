@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main/Main.unity
     guid: 0b6d60c8345600941b1073033ec0dff2
   - enabled: 1
-    path: Assets/Scenes/Main/Level/Hub.unity
-    guid: 10cce4a816b82b642834b923c93b805c
+    path: Assets/Scenes/Main/Level/Surface.unity
+    guid: 39e347039c909504fa679246d90e867f
   - enabled: 1
     path: Assets/Scenes/Main/Level/Level_1.unity
     guid: 57285ac6f04804b4daa654c848fb2341
@@ -27,14 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Main/Level/Level_4.unity
     guid: 5daa80b10cc01c04bbb2e4716bba04a3
   - enabled: 1
-    path: Assets/Scenes/Main/Level/Level_Boss.unity
-    guid: 9a042470e2ead7d4cb86b433bcab2b13
-  - enabled: 1
-    path: Assets/Scenes/Main/Level/Surface.unity
-    guid: 39e347039c909504fa679246d90e867f
+    path: Assets/Scenes/Main/Level/Hub.unity
+    guid: 10cce4a816b82b642834b923c93b805c
   - enabled: 1
     path: Assets/Scenes/Main/Level/Trench.unity
     guid: 434bec9590dfc6d4eb1af27c8964f898
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Level_Boss.unity
+    guid: 9a042470e2ead7d4cb86b433bcab2b13
   - enabled: 1
     path: Assets/Scenes/Main/Bridge/Bridge_1_2.unity
     guid: 56484dc4e81c6f643bb1da4351407223

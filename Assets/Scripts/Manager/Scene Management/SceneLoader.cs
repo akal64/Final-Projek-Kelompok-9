@@ -15,15 +15,17 @@ public class SceneLoader : MonoBehaviour
 	}
 
 	private void Check (Collider2D collision) {
-		if (collision.gameObject.name == "Player" && !SceneManager.GetSceneByBuildIndex(nextSceneBuildIndex).isLoaded) {
+		if (nextSceneBuildIndex != -1) {
+			if (collision.gameObject.name == "Player" && !SceneManager.GetSceneByBuildIndex(nextSceneBuildIndex).isLoaded) {
 
-			if (load) {
-				load = false;
-				return;
+				if (load) {
+					load = false;
+					return;
+				}
+
+				SceneManager.LoadScene(nextSceneBuildIndex, LoadSceneMode.Additive);
+				load = true;
 			}
-
-			SceneManager.LoadScene(nextSceneBuildIndex, LoadSceneMode.Additive);
-			load = true;
 		}
 	}
 }
