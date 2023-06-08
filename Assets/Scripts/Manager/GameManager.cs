@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 	}
 
     private void Update() {
-		// for test
+		// for health bar test
         if (Input.GetKeyDown(KeyCode.L)) {
             OnPlayerDamaged();
         }
