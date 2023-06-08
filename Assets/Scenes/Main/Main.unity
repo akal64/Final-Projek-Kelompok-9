@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -763,12 +763,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1029555144}
+  - component: {fileID: 1029555150}
   - component: {fileID: 1029555147}
   - component: {fileID: 1029555149}
   - component: {fileID: 1029555148}
   - component: {fileID: 1029555145}
   - component: {fileID: 1029555146}
-  - component: {fileID: 1029555150}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -887,8 +887,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
-  damage: 5
 --- !u!1 &1041285592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,10 +1395,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfc33b349fc68d479d361d9d5c6d421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 1375756881}
+  radiationProtection: {fileID: 0}
   playerControl: {fileID: 1029555148}
-  surfaceSceneName: Surface
   player: {fileID: 1029555150}
-  UI: {fileID: 1375756881}
+  clawAction: {fileID: 1835688865}
+  surfaceSceneName: Surface
 --- !u!1 &1375756880
 GameObject:
   m_ObjectHideFlags: 0

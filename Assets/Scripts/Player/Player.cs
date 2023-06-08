@@ -2,27 +2,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+	[SerializeField] private int maxHealth = 100;
+	private int currentHealth;
 
-    [Header("Press L to make player take damage")]
-    public int damage = 5; // temporary
+	public void Initialize () {
+		currentHealth = maxHealth;
+	}
 
-    public void Initialize() {
-        currentHealth = maxHealth;
-    }
+	public int GetMaxHealth () {
+		return maxHealth;
+	}
 
-    public int getHealth(string info) {
-        return info switch {
-            "current" => currentHealth,
-            "max" => maxHealth,
-            _ => damage
-        };
-    }
+	public int GetCurrentHealth () {
+		return currentHealth;
+	}
 
-    public void Damaged() {
-        currentHealth -= damage; // temporary
-
-        
-    }
+	public void TakeDamage (int damage) {
+		currentHealth -= damage;
+	}
 }

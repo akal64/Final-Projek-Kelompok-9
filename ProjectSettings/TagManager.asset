@@ -10,6 +10,7 @@ TagManager:
   - Button
   - Trash
   - Floating Object
+  - RadiationProtection
   layers:
   - Default
   - TransparentFX

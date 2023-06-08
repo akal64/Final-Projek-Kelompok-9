@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void setHealth(int health) {
+    public void SetHealth(int health) {
         healthSlider.value = health;
 
         fill.color = gradient.Evaluate(healthSlider.normalizedValue);

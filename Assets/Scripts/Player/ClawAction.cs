@@ -11,12 +11,16 @@ public class ClawAction : MonoBehaviour
 	private int layerIndex;
 	private bool isTrash = false;
 	private bool isPickable = false;
+	private bool isRadProtection = false;
 	private bool isInteractable = false;
 	private float rayDistance;
+
 	private GameObject pickedGameObject;
 	private RaycastHit2D hitInfo;
 
 	private FloatingObject floatingObject;
+
+	public System.Action RadiationProtectionPicked;
 
 	public void Initialize () {
 		layerIndex = LayerMask.NameToLayer(layerName);
@@ -35,6 +39,12 @@ public class ClawAction : MonoBehaviour
 			isInteractable = true;
 		} else {
 			isInteractable = false;
+		}
+
+		if (hitInfo.collider != null && hitInfo.collider.gameObject.CompareTag("RadiationProtection")) {
+			isRadProtection = true;
+		} else {
+			isRadProtection = false;
 		}
 
 	}
@@ -60,7 +70,11 @@ public class ClawAction : MonoBehaviour
 
 			pickedGameObject.transform.position = grabPoint.position;
 			pickedGameObject.transform.SetParent(transform);
-			
+
+			if (isRadProtection) {
+				RadiationProtectionPicked?.Invoke();
+			}
+
 			CheckIfTrash();
 		}
 	}
