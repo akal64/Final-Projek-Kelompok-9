@@ -43,6 +43,7 @@ public class ClawAction : MonoBehaviour
 
 		if (hitInfo.collider != null && hitInfo.collider.gameObject.CompareTag("RadiationProtection")) {
 			isRadProtection = true;
+			RadiationProtectionPicked?.Invoke();
 		} else {
 			isRadProtection = false;
 		}
@@ -70,10 +71,6 @@ public class ClawAction : MonoBehaviour
 
 			pickedGameObject.transform.position = grabPoint.position;
 			pickedGameObject.transform.SetParent(transform);
-
-			if (isRadProtection) {
-				RadiationProtectionPicked?.Invoke();
-			}
 
 			CheckIfTrash();
 		}
