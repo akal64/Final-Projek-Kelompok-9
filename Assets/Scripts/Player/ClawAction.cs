@@ -43,10 +43,12 @@ public class ClawAction : MonoBehaviour
 			isInteractable = false;
 		}
 
-		if (hitInfo.collider != null && hitInfo.collider.gameObject.CompareTag("RadiationProtection")) {
-			RadiationProtectionPicked?.Invoke();
-		} 
+	}
 
+	private void OnTriggerEnter2D (Collider2D collision) {
+		if (collision.CompareTag("RadiationProtection")) {
+			RadiationProtectionPicked?.Invoke();
+		}
 	}
 
 	public void OnInteract () {
