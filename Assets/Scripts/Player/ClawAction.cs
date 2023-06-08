@@ -11,7 +11,6 @@ public class ClawAction : MonoBehaviour
 	private int layerIndex;
 	private bool isTrash = false;
 	private bool isPickable = false;
-	private bool isRadProtection = false;
 	private bool isInteractable = false;
 	private float rayDistance;
 
@@ -27,6 +26,9 @@ public class ClawAction : MonoBehaviour
 	}
 
 	private void Update () {
+
+
+
 		hitInfo = Physics2D.Raycast(rayPoint.position, transform.right, rayDistance);
 
 		if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex) {
@@ -42,11 +44,8 @@ public class ClawAction : MonoBehaviour
 		}
 
 		if (hitInfo.collider != null && hitInfo.collider.gameObject.CompareTag("RadiationProtection")) {
-			isRadProtection = true;
 			RadiationProtectionPicked?.Invoke();
-		} else {
-			isRadProtection = false;
-		}
+		} 
 
 	}
 

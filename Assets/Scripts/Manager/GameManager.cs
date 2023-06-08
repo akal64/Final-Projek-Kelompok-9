@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
 	[Header("Scene Management")]
 	[SerializeField] private string surfaceSceneName;
 
-	private bool isPlayerHasProtection = false;
+	[SerializeField] private bool isPlayerHasProtection = false;
+	[SerializeField] private bool isRadiationItemExist = false;
 
 	private void Awake () {
 
@@ -33,10 +34,14 @@ public class GameManager : MonoBehaviour
 
 		int checkRadiationItem = PlayerPrefs.GetInt("radiationProtection");
 
-		if (checkRadiationItem > 1) {
+		if (checkRadiationItem < 1) {
 			PlayerPrefs.SetInt("radiationProtection", 0);
+			radiationProtection.SetActive(true);
+
 		} else if (checkRadiationItem == 1) {
 			isPlayerHasProtection = true;
+			radiationProtection.SetActive(false);
+
 		}
 	}
 
@@ -50,6 +55,18 @@ public class GameManager : MonoBehaviour
 	private void OnEnable () {
 		playerControl.PauseClicked += OnPauseClicked;
 		clawAction.RadiationProtectionPicked += OnRadiationProtectionPicked;
+	}
+
+	private void Update () {
+		if (radiationProtection.activeSelf) {
+			isRadiationItemExist = true;
+		} else {
+			isRadiationItemExist = false;
+		}
+
+		if (!isPlayerHasProtection && !isRadiationItemExist) {
+			radiationProtection.SetActive(true);
+		}
 	}
 
 	private void OnDisable () {
@@ -66,14 +83,13 @@ public class GameManager : MonoBehaviour
 		// Save that we picked up the radiation protection
 		PlayerPrefs.SetInt("radiationProtection", 1);
 		PlayerPrefs.Save();
+		isPlayerHasProtection = true;
 
 		// SetActive false the radiation protection
 		if (radiationProtection != null) {
 			radiationProtection.SetActive(false);
 		}
 
-		// Clear Claw Action
-		clawAction.OnDropObject();
 	}
 
 	public void DamageByRadiation (int damage) {
