@@ -54,7 +54,7 @@ public class ClawAction : MonoBehaviour
 	public void OnInteract () {
 		if (hitInfo.collider != null && isInteractable) {
 
-			Lever lever = hitInfo.collider.gameObject.GetComponent<Lever>();
+			LeverTrigger lever = hitInfo.collider.gameObject.GetComponent<LeverTrigger>();
 
 			if(lever != null) {
 				lever.OnInteract();
