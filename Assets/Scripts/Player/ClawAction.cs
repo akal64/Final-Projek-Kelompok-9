@@ -2,23 +2,30 @@ using UnityEngine;
 
 public class ClawAction : MonoBehaviour
 {
+
+	// Inspector Variables
 	[SerializeField] private Transform rayPoint;
 	[SerializeField] private Transform grabPoint;
 	[SerializeField] private string layerName;
 	[SerializeField] private string trashTag;
 	[SerializeField] private float throwForce;
 
+	// Private Variables
 	private int layerIndex;
+	private float rayDistance;
 	private bool isTrash = false;
 	private bool isPickable = false;
-	private bool isInteractable = false;
-	private float rayDistance;
+	private bool isLever = false;
 
-	private GameObject pickedGameObject;
+	// Unity Components References
+	private Collider2D collision;
 	private RaycastHit2D hitInfo;
 
+	// Scripts and Objects References
 	private FloatingObject floatingObject;
+	private GameObject pickedGameObject;
 
+	// Events
 	public System.Action RadiationProtectionPicked;
 
 	public void Initialize () {
@@ -26,8 +33,6 @@ public class ClawAction : MonoBehaviour
 	}
 
 	private void Update () {
-
-
 
 		hitInfo = Physics2D.Raycast(rayPoint.position, transform.right, rayDistance);
 
@@ -37,24 +42,33 @@ public class ClawAction : MonoBehaviour
 			isPickable = false;
 		}
 
-		if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Interactable")) {
-			isInteractable = true;
-		} else {
-			isInteractable = false;
-		}
-
 	}
 
 	private void OnTriggerEnter2D (Collider2D collision) {
 		if (collision.CompareTag("RadiationProtection")) {
 			RadiationProtectionPicked?.Invoke();
 		}
+		
+		CheckIfLever(collision);
+
+	}
+
+	private void OnTriggerStay2D (Collider2D collision) {
+		
+		CheckIfLever(collision);
+
+	}
+
+	private void OnTriggerExit2D (Collider2D collision) {
+		isLever = false;
+		this.collision = null;
 	}
 
 	public void OnInteract () {
-		if (hitInfo.collider != null && isInteractable) {
 
-			LeverTrigger lever = hitInfo.collider.gameObject.GetComponent<LeverTrigger>();
+		if (isLever) {
+
+			LeverTrigger lever = collision.gameObject.GetComponent<LeverTrigger>();
 
 			if(lever != null) {
 				lever.OnInteract();
@@ -68,7 +82,8 @@ public class ClawAction : MonoBehaviour
 			pickedGameObject = hitInfo.collider.gameObject;
 
 			floatingObject = pickedGameObject.GetComponent<FloatingObject>();
-			floatingObject.SetStateBeingCarried();
+
+			floatingObject.SetFloatingObjectState(FloatingObjectState.BeingCarried);
 
 			pickedGameObject.transform.position = grabPoint.position;
 			pickedGameObject.transform.SetParent(transform);
@@ -82,11 +97,9 @@ public class ClawAction : MonoBehaviour
 
 		if (pickedGameObject != null) {
 
-			floatingObject.SetStateIdle();
+			floatingObject.SetFloatingObjectState(FloatingObjectState.BeingDropped);
 
-			pickedGameObject.transform.SetParent(null);
-			pickedGameObject = null;
-			
+			DetachFromClaw();		
 			CheckIfTrash();
 			ClearFloatingObjectRef();
 		}
@@ -96,11 +109,11 @@ public class ClawAction : MonoBehaviour
 
 		if (pickedGameObject != null) {
 
-			floatingObject.SetStateBeingThrown();
-			floatingObject.SetVelocity(transform.right * throwForce);
-			pickedGameObject.transform.SetParent(null);
-			pickedGameObject = null;
+			floatingObject.SetFloatingObjectState(FloatingObjectState.BeingThrown);
 
+			floatingObject.SetVelocity(transform.right * throwForce);
+
+			DetachFromClaw();
 			CheckIfTrash();
 			ClearFloatingObjectRef();
 		}
@@ -109,9 +122,18 @@ public class ClawAction : MonoBehaviour
 	public void OnProcessTrash () {
 
 		if (isTrash) {
+
+			// TODO PICKUP TRASH
 			Debug.Log("Process Trash");
 		}
 
+	}
+
+	private void CheckIfLever (Collider2D collision) {
+		if (collision.CompareTag("Lever")) {
+			isLever = true;
+			this.collision = collision;
+		}
 	}
 
 	private void CheckIfTrash () {
@@ -122,6 +144,11 @@ public class ClawAction : MonoBehaviour
 			isTrash = false;
 		}
 
+	}
+
+	private void DetachFromClaw () {
+		pickedGameObject.transform.SetParent(null);
+		pickedGameObject = null;
 	}
 
 	private void ClearFloatingObjectRef () {

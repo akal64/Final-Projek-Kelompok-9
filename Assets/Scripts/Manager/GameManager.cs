@@ -3,20 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
 	public static GameManager instance;
 
+	[Header("Managers")]
 	[SerializeField] private UIManager uiManager;
-	[SerializeField] private GameObject radiationProtection;
+	[SerializeField] private GameSceneManager gameSceneManager;
 
 	[Header("Player Control")]
 	[SerializeField] private PlayerControl playerControl;
 	[SerializeField] private Player player;
 	[SerializeField] private ClawAction clawAction;
 
-	[Header("Scene Management")]
-	[SerializeField] private string surfaceSceneName;
-
+	[Header("Level Object Options")]
+	[SerializeField] private GameObject radiationProtection;
 	[SerializeField] private bool isPlayerHasProtection = false;
 	[SerializeField] private bool isRadiationItemExist = false;
 
@@ -28,9 +27,7 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		if (SceneManager.GetSceneByName(surfaceSceneName).isLoaded == false) {
-			SceneManager.LoadScene(surfaceSceneName, LoadSceneMode.Additive);
-		}
+		gameSceneManager.Initialize();
 
 		int checkRadiationItem = PlayerPrefs.GetInt("radiationProtection");
 
@@ -46,6 +43,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void Start () {
+
 		playerControl.Initialize();
 		player.Initialize();
 		uiManager.SetMaxHealth(player.GetMaxHealth());

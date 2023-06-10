@@ -11,6 +11,7 @@ TagManager:
   - Trash
   - Floating Object
   - RadiationProtection
+  - Lever
   layers:
   - Default
   - TransparentFX

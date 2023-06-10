@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class followObjectUI : MonoBehaviour
+public class FollowObjectUI : MonoBehaviour
 {
     public Transform targetObject;
 
