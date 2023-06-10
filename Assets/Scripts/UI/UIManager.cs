@@ -4,8 +4,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Slider healthSlider;
-    private Gradient gradient;
+     private Gradient gradient;
     private Image fill;
+
+    private void Awake() {
+        fill = healthSlider.fillRect.GetComponent<Image>();
+        gradient = new Gradient();
+    }
 
     public void SetMaxHealth(int health) {
         healthSlider.maxValue = health;

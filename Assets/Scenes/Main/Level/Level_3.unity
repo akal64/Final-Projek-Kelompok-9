@@ -747,9 +747,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5842690783697083224, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a7468ab087c1604991193d1cc85cd6f, type: 3}
+    - target: {fileID: 5842690783697083224, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083224, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083224, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8265267
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083224, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7607843
+      objectReference: {fileID: 0}
     - target: {fileID: 5842690783697083226, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083226, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083226, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083226, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5842690783697083226, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
       propertyPath: m_LocalPosition.x
@@ -791,9 +823,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083226, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5842690783697083229, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
       propertyPath: m_Name
       value: New Floating Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083231, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Size.x
+      value: 5.4548264
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083231, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Size.y
+      value: 4.8349953
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083231, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.030385971
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083231, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.04022789
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083231, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842690783697083231, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01aa3bc20b9ae7d41b05c1ef393c7713, type: 3}
@@ -844,11 +904,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectState: 0
   isShouldActive: 0
-  reverseDirection: 0
-  moveHorizontal: 1
   slidingDoor: {fileID: 332174936}
   moveRange: 5
   moveSpeed: 1
+  reverseDirection: 0
+  moveHorizontal: 1
 --- !u!1 &858770556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,11 +3404,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectState: 0
   isShouldActive: 0
-  reverseDirection: 1
-  moveHorizontal: 0
   slidingDoor: {fileID: 1563919397}
   moveRange: 7
   moveSpeed: 1
+  reverseDirection: 1
+  moveHorizontal: 0
 --- !u!1 &1657910911
 GameObject:
   m_ObjectHideFlags: 0
@@ -6272,11 +6332,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectState: 0
   isShouldActive: 0
-  reverseDirection: 1
-  moveHorizontal: 0
   slidingDoor: {fileID: 1764313872}
   moveRange: 5
   moveSpeed: 1
+  reverseDirection: 1
+  moveHorizontal: 0
 --- !u!1 &2114262007
 GameObject:
   m_ObjectHideFlags: 0
