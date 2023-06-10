@@ -4,22 +4,22 @@ using UnityEngine;
 public class LeverTrigger : ObjectTrigger
 {
 
-	[Header("Lever References")]
+	[Header("Object References")]
 	[SerializeField] private GameObject rotatingPoint;
 	[SerializeField] private SpriteRenderer leverIndicator;
 
-	[Header("Lever Specs")]
+	[Header("Object Settings")]
 	[SerializeField] private float rotationSpeed = 100f;
 
 	private Quaternion targetRotation;
 
 	private void Start () {
 
-		objectState = ObjectState.Off;
+		objectState = PuzzleObjectState.Off;
 
-		objectType = ObjectType.Lever;
+		objectType = PuzzleObjectType.Lever;
 
-		if (objectState == ObjectState.Off) {
+		if (objectState == PuzzleObjectState.Off) {
 			SetObjectActivationStatus(false);
 			IndicatorVisual(false);
 			targetRotation = Quaternion.Euler(0f, 0f, -45f);
@@ -34,11 +34,11 @@ public class LeverTrigger : ObjectTrigger
 		Quaternion newRotation = Quaternion.RotateTowards(rotatingPoint.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 		rotatingPoint.transform.rotation = newRotation;
 
-		if (objectState == ObjectState.Active && !isActivated) {
+		if (objectState == PuzzleObjectState.Active && !isActivated) {
 			ActivateLever();
 			IndicatorVisual(true);
 
-		} else if (objectState == ObjectState.Off && isActivated) {
+		} else if (objectState == PuzzleObjectState.Off && isActivated) {
 			DeactivateLever();
 			IndicatorVisual(false);
 		}
@@ -47,12 +47,12 @@ public class LeverTrigger : ObjectTrigger
 
 	public void OnInteract () {
 
-		if (objectType == ObjectType.Lever) {
-			if (objectState == ObjectState.Off) {
-				objectState = ObjectState.Active;
+		if (objectType == PuzzleObjectType.Lever) {
+			if (objectState == PuzzleObjectState.Off) {
+				objectState = PuzzleObjectState.Active;
 
-			} else if (objectState == ObjectState.Active) {
-				objectState = ObjectState.Off;
+			} else if (objectState == PuzzleObjectState.Active) {
+				objectState = PuzzleObjectState.Off;
 
 			}
 		}
@@ -60,22 +60,32 @@ public class LeverTrigger : ObjectTrigger
 	}
 
 	private void ActivateLever () {
+
 		targetRotation *= Quaternion.Euler(0f, 0f, 90f);
 		SetObjectActivationStatus(true);
 		isActivated = true;
+
 	}
 
 	private void DeactivateLever () {
+
 		targetRotation *= Quaternion.Euler(0f, 0f, -90f);
 		SetObjectActivationStatus(false);
 		isActivated = false;
+
 	}
 
 	private void IndicatorVisual (bool isOn) {
+
 		if (isOn) {
+
 			leverIndicator.color = Color.green;
+
 		} else {
+
 			leverIndicator.color = Color.red;
+
 		}
+
 	}
 }

@@ -18,10 +18,12 @@ public class SceneUnloader : MonoBehaviour
 	}
 
 	private void CheckCollision (Collider2D collision) {
+
 		if (lastSceneBuildIndex != -1) {
 			if (collision.gameObject.name == "Player" && SceneManager.GetSceneByBuildIndex(lastSceneBuildIndex).isLoaded) {
 				SceneManager.UnloadSceneAsync(lastSceneBuildIndex);
 			}
 		}
+
 	}
 }

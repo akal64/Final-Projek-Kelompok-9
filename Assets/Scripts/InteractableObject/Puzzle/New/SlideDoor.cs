@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class SlideDoor : ObjectAction
 {
-	[SerializeField] private bool reverseDirection = false;
-	[SerializeField] private bool moveHorizontal = false;
 
 	[Header("Object References")]
 	[SerializeField] private GameObject slidingDoor;
 
-	[Header("Object Specs")]
+	[Header("Object Settings")]
 	[SerializeField] private float moveRange = 2f;
 	[SerializeField] private float moveSpeed = 1f;
+	[SerializeField] private bool reverseDirection = false;
+	[SerializeField] private bool moveHorizontal = false;
 
 	private float moveRangeX;
 	private float moveRangeY;
@@ -28,11 +28,11 @@ public class SlideDoor : ObjectAction
 
 		slidingDoor.transform.position = Vector3.MoveTowards(slidingDoor.transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-		if (isShouldActive && objectState == ObjectState.Off) {
+		if (isShouldActive && objectState == PuzzleObjectState.Off) {
 
 			OpenDoor();
 
-		} else if (!isShouldActive && objectState == ObjectState.Active) {
+		} else if (!isShouldActive && objectState == PuzzleObjectState.Active) {
 
 			CloseDoor();
 		}
@@ -57,13 +57,13 @@ public class SlideDoor : ObjectAction
 	private void OpenDoor () {
 
 		targetPosition = new Vector3(slidingDoor.transform.position.x + (moveRangeX * multiplier), slidingDoor.transform.position.y + (moveRangeY * multiplier), slidingDoor.transform.position.z);
-		objectState = ObjectState.Active;
+		objectState = PuzzleObjectState.Active;
 
 	}
 
 	private void CloseDoor () {
 		targetPosition = new Vector3(originalPosition.x, originalPosition.y, slidingDoor.transform.position.z);
-		objectState = ObjectState.Off;
+		objectState = PuzzleObjectState.Off;
 
 	}
 

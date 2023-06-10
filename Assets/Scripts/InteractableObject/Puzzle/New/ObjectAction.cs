@@ -1,17 +1,16 @@
 using UnityEngine;
 
-public enum ObjectState
+public enum PuzzleObjectState
 {
 	Off,
 	Active
 }
 
-
 public class ObjectAction : MonoBehaviour
 {
 
-	[Header("Object Status")]
-	[SerializeField] protected ObjectState objectState;
+	[Header("General Object Settings")]
+	[SerializeField] protected PuzzleObjectState objectState;
 	[SerializeField] protected bool isShouldActive = false;
 
 	private void Start () {
@@ -19,20 +18,18 @@ public class ObjectAction : MonoBehaviour
 	}
 
 	public virtual void Initialize () {
-		objectState = ObjectState.Off;
+		objectState = PuzzleObjectState.Off;
 	}
 
 	private void Update () {
 
-        if (objectState == ObjectState.Active  && !isShouldActive)
+        if (objectState == PuzzleObjectState.Active  && !isShouldActive)
         {
-			objectState = ObjectState.Off;
-			ShutDownDoor();
+			objectState = PuzzleObjectState.Off;
 
-		} else if (objectState == ObjectState.Off && isShouldActive) {
+		} else if (objectState == PuzzleObjectState.Off && isShouldActive) {
 
-			objectState = ObjectState.Active;
-			ActivateDoor();
+			objectState = PuzzleObjectState.Active;
 
 		}
 
@@ -40,14 +37,6 @@ public class ObjectAction : MonoBehaviour
 
 	public void SetActive(bool isActive) {
 		this.isShouldActive = isActive;
-	}
-
-	protected virtual void ActivateDoor () {
-
-	}
-
-	protected virtual void ShutDownDoor () {
-
 	}
 
 }

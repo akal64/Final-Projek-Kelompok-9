@@ -6,7 +6,7 @@ public class RotateDoor : ObjectAction
 	[Header("Object References")]
 	[SerializeField] private GameObject rotatingPoint;
 
-	[Header("Object Specs")]
+	[Header("Object Settings")]
 	[SerializeField] private float rotationSpeed = 100f;
 	[SerializeField] private float zRotationAngle = 90f;
 
@@ -23,10 +23,10 @@ public class RotateDoor : ObjectAction
 		Quaternion newRotation = Quaternion.RotateTowards(rotatingPoint.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 		rotatingPoint.transform.rotation = newRotation;
 
-		if (isShouldActive && objectState == ObjectState.Off) {
+		if (isShouldActive && objectState == PuzzleObjectState.Off) {
 			OpenDoor();
 
-		} else if (!isShouldActive && objectState == ObjectState.Active) {
+		} else if (!isShouldActive && objectState == PuzzleObjectState.Active) {
 			CloseDoor();
 
 		}
@@ -40,12 +40,12 @@ public class RotateDoor : ObjectAction
 	protected void OpenDoor () {
 
 		targetRotation *= Quaternion.Euler(0f, 0f, zRotationAngle);
-		objectState = ObjectState.Active;
+		objectState = PuzzleObjectState.Active;
 	}
 
 	protected void CloseDoor () {
 
 		targetRotation *= Quaternion.Euler(0f, 0f, (-1 * zRotationAngle));
-		objectState = ObjectState.Off;
+		objectState = PuzzleObjectState.Off;
 	}
 }

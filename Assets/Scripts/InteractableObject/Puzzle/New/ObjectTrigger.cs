@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ObjectType
+public enum PuzzleObjectType
 {
 	Button,
 	Lever
@@ -9,11 +9,13 @@ public enum ObjectType
 
 public class ObjectTrigger : MonoBehaviour
 {
+
+	[Header("General Object References")]
 	[SerializeField] protected List<ObjectAction> objectActionList = new List<ObjectAction>();
 
-	[Header("Object Status")]
-	[SerializeField] protected ObjectType objectType;
-	[SerializeField] protected ObjectState objectState;
+	[Header("General Object Settings")]
+	[SerializeField] protected PuzzleObjectType objectType;
+	[SerializeField] protected PuzzleObjectState objectState;
 	[SerializeField] protected bool isActivated = false;
 
 	private void Start () {

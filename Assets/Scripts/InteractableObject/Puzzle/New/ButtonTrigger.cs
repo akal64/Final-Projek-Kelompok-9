@@ -5,15 +5,15 @@ public class ButtonTrigger : ObjectTrigger
 {
 
 	public void Start () {
-		objectType = ObjectType.Lever;
+		objectType = PuzzleObjectType.Lever;
 	}
 
 	private void Update () {
-		if (isActivated && objectState == ObjectState.Off) {
+		if (isActivated && objectState == PuzzleObjectState.Off) {
 
 			Activate();
 
-		} else if (!isActivated && objectState == ObjectState.Active) { 
+		} else if (!isActivated && objectState == PuzzleObjectState.Active) { 
 		
 			ShutDown();
 
@@ -23,14 +23,14 @@ public class ButtonTrigger : ObjectTrigger
 	private void OnCollisionEnter2D (Collision2D collision) {
 		isActivated = true;
 		Activate();
-		objectState = ObjectState.Active;
+		objectState = PuzzleObjectState.Active;
 
 	}
 
 	private void OnCollisionExit2D (Collision2D collision) {
 		isActivated = false;
 		ShutDown();
-		objectState = ObjectState.Off;
+		objectState = PuzzleObjectState.Off;
 
 	}
 
