@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class SlideDoor : ObjectAction
 {
+	[SerializeField] private bool reverseDirection = false;
+	[SerializeField] private bool moveHorizontal = false;
+
 	[Header("Object References")]
 	[SerializeField] private GameObject slidingDoor;
 
@@ -9,6 +12,10 @@ public class SlideDoor : ObjectAction
 	[SerializeField] private float moveRange = 2f;
 	[SerializeField] private float moveSpeed = 1f;
 
+	private float moveRangeX;
+	private float moveRangeY;
+
+	private int multiplier = 1;
 	private Vector3 targetPosition;
 	private Vector3 originalPosition;
 
@@ -23,31 +30,41 @@ public class SlideDoor : ObjectAction
 
 		if (isShouldActive && objectState == ObjectState.Off) {
 
-			Debug.Log("If else open door");
-
 			OpenDoor();
 
 		} else if (!isShouldActive && objectState == ObjectState.Active) {
 
-			Debug.Log("If else close door");
-
 			CloseDoor();
 		}
 	
+		if (reverseDirection) {
+			multiplier = -1;
+		} else {
+			multiplier = 1;
+		}
+
+		if (moveHorizontal) {
+			moveRangeX = moveRange;
+			moveRangeY = 0;
+		} else if (!moveHorizontal) {
+			moveRangeY = moveRange;
+			moveRangeX = 0;
+		}
+
 	}
 
 
 	private void OpenDoor () {
 
-		targetPosition = new Vector3(slidingDoor.transform.position.x, slidingDoor.transform.position.y + moveRange, slidingDoor.transform.position.z);
+		targetPosition = new Vector3(slidingDoor.transform.position.x + (moveRangeX * multiplier), slidingDoor.transform.position.y + (moveRangeY * multiplier), slidingDoor.transform.position.z);
 		objectState = ObjectState.Active;
-		Debug.Log("Door is opened");
+
 	}
 
 	private void CloseDoor () {
-		targetPosition = new Vector3(slidingDoor.transform.position.x, originalPosition.y, slidingDoor.transform.position.z);
+		targetPosition = new Vector3(originalPosition.x, originalPosition.y, slidingDoor.transform.position.z);
 		objectState = ObjectState.Off;
-		Debug.Log("Door is closed");
+
 	}
 
 }

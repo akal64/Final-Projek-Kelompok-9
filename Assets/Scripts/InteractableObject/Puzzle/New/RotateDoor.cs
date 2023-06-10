@@ -8,6 +8,7 @@ public class RotateDoor : ObjectAction
 
 	[Header("Object Specs")]
 	[SerializeField] private float rotationSpeed = 100f;
+	[SerializeField] private float zRotationAngle = 90f;
 
 	private Quaternion targetRotation;
 
@@ -38,13 +39,13 @@ public class RotateDoor : ObjectAction
 
 	protected void OpenDoor () {
 
-		targetRotation *= Quaternion.Euler(0f, 0f, -90f);
+		targetRotation *= Quaternion.Euler(0f, 0f, zRotationAngle);
 		objectState = ObjectState.Active;
 	}
 
 	protected void CloseDoor () {
 
-		targetRotation *= Quaternion.Euler(0f, 0f, 90f);
+		targetRotation *= Quaternion.Euler(0f, 0f, (-1 * zRotationAngle));
 		objectState = ObjectState.Off;
 	}
 }

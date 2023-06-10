@@ -50,8 +50,10 @@ public class LeverTrigger : ObjectTrigger
 		if (objectType == ObjectType.Lever) {
 			if (objectState == ObjectState.Off) {
 				objectState = ObjectState.Active;
+
 			} else if (objectState == ObjectState.Active) {
 				objectState = ObjectState.Off;
+
 			}
 		}
 

@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class FloatingObject : MonoBehaviour
 {
-
+	[Header("References")]
 	[SerializeField] private Rigidbody2D objectRigidbody2D;
+
+	[Header("Specs")]
+	[SerializeField] private bool useGravity = false;
 
 	private void Start () {
 		SetStateIdle();
 	}
 
 	public void SetStateIdle () {
-		SetKinematic(true);
+		
+		if (useGravity) {
+
+			SetKinematic(false);
+
+		} else if(!useGravity) {
+
+			SetKinematic(true);
+
+		}
 
 		//objectRigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 	}
