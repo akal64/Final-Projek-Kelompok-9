@@ -59,9 +59,6 @@ public class PlayerControl : MonoBehaviour
 
 	private void OnDisable () {
 
-		// Input Map Settings
-		_playerInputMap.Disable();
-
 		// Player Movement UnSubscribe
 		_playerInputMap.Gameplay.PlayerMovement.performed -= ctx => OnPlayerMovement(ctx);
 		_playerInputMap.Gameplay.PlayerMovement.canceled -= ctx => OnPlayerMovement(ctx);
@@ -78,6 +75,9 @@ public class PlayerControl : MonoBehaviour
 
 		// Game UnSubscribe
 		_playerInputMap.Gameplay.Pause.performed -= ctx => OnPause();
+
+		// Input Map Settings
+		_playerInputMap.Disable();
 	}
 
 	private void OnPlayerMovement (InputAction.CallbackContext ctx) {

@@ -605,11 +605,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectState: 0
   isShouldActive: 0
-  reverseDirection: 0
-  moveHorizontal: 0
   slidingDoor: {fileID: 1391917981}
   moveRange: 4
   moveSpeed: 1
+  reverseDirection: 0
+  moveHorizontal: 0
 --- !u!4 &1781763750
 Transform:
   m_ObjectHideFlags: 0
@@ -1803,11 +1803,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectState: 0
   isShouldActive: 0
-  reverseDirection: 0
-  moveHorizontal: 0
   slidingDoor: {fileID: 7379357232783767856}
   moveRange: 4
   moveSpeed: 1
+  reverseDirection: 0
+  moveHorizontal: 0
 --- !u!1 &7379357232783767856
 GameObject:
   m_ObjectHideFlags: 0

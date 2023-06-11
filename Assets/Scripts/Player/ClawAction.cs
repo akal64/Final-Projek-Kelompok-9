@@ -4,15 +4,18 @@ public class ClawAction : MonoBehaviour
 {
 
 	// Inspector Variables
+
+	[Header("Raycast Settings")]
 	[SerializeField] private Transform rayPoint;
 	[SerializeField] private Transform grabPoint;
+
+	[Header("Script Settings")]
 	[SerializeField] private string layerName;
 	[SerializeField] private string trashTag;
 	[SerializeField] private float throwForce;
 
 	// Private Variables
 	private int layerIndex;
-	private float rayDistance;
 	private bool isTrash = false;
 	private bool isPickable = false;
 	private bool isLever = false;
@@ -34,7 +37,7 @@ public class ClawAction : MonoBehaviour
 
 	private void Update () {
 
-		hitInfo = Physics2D.Raycast(rayPoint.position, transform.right, rayDistance);
+		hitInfo = Physics2D.Raycast(rayPoint.position, transform.right, 10);
 
 		if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex) {
 			isPickable = true;
