@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +18,7 @@ public class PlayerControl : MonoBehaviour
 	private Vector3 mouseInputPosition;
 	private PlayerInputMap _playerInputMap;
 
-	public Action PauseClicked;
+	public System.Action PauseClicked;
 
 	public void Initialize () {
 
