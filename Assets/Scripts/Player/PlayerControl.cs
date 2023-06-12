@@ -18,8 +18,6 @@ public class PlayerControl : MonoBehaviour
 	private Vector3 mouseInputPosition;
 	private PlayerInputMap _playerInputMap;
 
-	public System.Action PauseClicked;
-
 	public void Initialize () {
 
 		// Input Map Settings
@@ -39,9 +37,6 @@ public class PlayerControl : MonoBehaviour
 		_playerInputMap.Gameplay.ThrowObject.performed += ctx => OnThrowObject();
 		_playerInputMap.Gameplay.DropObject.performed += ctx => OnDropObject();
 		_playerInputMap.Gameplay.ProcessTrash.performed += ctx => OnProcessTrash();
-
-		// Game Subscribe
-		_playerInputMap.Gameplay.Pause.performed += ctx => OnPause();
 
 
 		playerMovement.SetDroneRigidbody2D(droneRigidbody2D);
@@ -71,9 +66,6 @@ public class PlayerControl : MonoBehaviour
 		_playerInputMap.Gameplay.ThrowObject.performed -= ctx => OnThrowObject();
 		_playerInputMap.Gameplay.DropObject.performed -= ctx => OnDropObject();
 		_playerInputMap.Gameplay.ProcessTrash.performed -= ctx => OnProcessTrash();
-
-		// Game UnSubscribe
-		_playerInputMap.Gameplay.Pause.performed -= ctx => OnPause();
 
 		// Input Map Settings
 		DisableController();
@@ -129,10 +121,6 @@ public class PlayerControl : MonoBehaviour
 
 	private void OnProcessTrash () {
 		clawAction.OnProcessTrash();
-	}
-
-	private void OnPause () {
-		PauseClicked.Invoke();
 	}
 
 	private void SetDroneMoveDirection(Vector2 direction) {
