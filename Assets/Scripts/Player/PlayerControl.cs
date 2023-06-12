@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
 
 		// Input Map Settings
 		_playerInputMap = new PlayerInputMap();
-		_playerInputMap.Enable();
+		EnableController();
 
 		// Player Movement Subscribe
 		_playerInputMap.Gameplay.PlayerMovement.performed += ctx => OnPlayerMovement(ctx);
@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour
 		_playerInputMap.Gameplay.Pause.performed -= ctx => OnPause();
 
 		// Input Map Settings
-		_playerInputMap.Disable();
+		DisableController();
 	}
 
 	private void OnPlayerMovement (InputAction.CallbackContext ctx) {
@@ -93,7 +93,6 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	private void OnClawMovement (InputAction.CallbackContext ctx) {
-		// TODO Track Mouse Cursor Position
 
 		mouseInputPosition = ctx.ReadValue<Vector2>();
 
@@ -113,8 +112,6 @@ public class PlayerControl : MonoBehaviour
 	}
 
     private void OnInteract () {
-        // TODO Enable Interact UI
-
 		clawAction.OnInteract();
     }
 
@@ -155,4 +152,13 @@ public class PlayerControl : MonoBehaviour
 		mouseWorldPosition.z = 0;
 
 	}
+
+	public void EnableController () {
+		_playerInputMap.Enable();
+	}
+
+	public void DisableController () {
+		_playerInputMap.Disable();
+	}
+
 }

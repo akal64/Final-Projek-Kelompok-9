@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnEnable () {
-		playerControl.PauseClicked += OnPauseClicked;
 		clawAction.RadiationProtectionPicked += OnRadiationProtectionPicked;
 	}
 
@@ -68,22 +67,15 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnDisable () {
-		playerControl.PauseClicked -= OnPauseClicked;
 		clawAction.RadiationProtectionPicked -= OnRadiationProtectionPicked;
 	}
 
-	private void OnPauseClicked () {
-		// TODO Pause Game
-		Debug.Log("Pause Clicked");
-	}
-
 	private void OnRadiationProtectionPicked () {
-		// Save that we picked up the radiation protection
+
 		PlayerPrefs.SetInt("radiationProtection", 1);
 		PlayerPrefs.Save();
 		isPlayerHasProtection = true;
 
-		// SetActive false the radiation protection
 		if (radiationProtection != null) {
 			radiationProtection.SetActive(false);
 		}
@@ -91,9 +83,20 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void DamageByRadiation (int damage) {
+
 		if (!isPlayerHasProtection) {
 			player.TakeDamage(damage);
 			uiManager.SetHealth(player.GetCurrentHealth());
 		}
+
 	}
+
+	public void EnableController () {
+		playerControl.EnableController();
+	}
+
+	public void DisableController () {
+		playerControl.DisableController();
+	}
+
 }
