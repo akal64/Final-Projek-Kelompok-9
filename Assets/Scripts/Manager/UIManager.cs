@@ -1,19 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Slider healthSlider;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject protectionIndicator;
+    [SerializeField] private Slider trashSlider;
+    [SerializeField] private TextMeshProUGUI trashCount;
 
-     private Gradient gradient;
+    private Gradient gradient;
     private Image fill;
 
     private void Awake() {
         fill = healthSlider.fillRect.GetComponent<Image>();
         gradient = new Gradient();
+        protectionIndicator.SetActive(false);
     }
 
     public void SetMaxHealth(int health) {
@@ -49,6 +54,16 @@ public class UIManager : MonoBehaviour
 
     public void MainMenuButton() {
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void UpdateTrashCount(int trashValue) {
+        Debug.Log("Trash Added");
+        trashSlider.value = trashValue;
+        trashCount.SetText(trashValue.ToString());
+    }
+
+    public void OnRadiationProtectionPicked() {
+        protectionIndicator.SetActive(true);
     }
 
 }

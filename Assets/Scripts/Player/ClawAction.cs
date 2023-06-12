@@ -1,3 +1,4 @@
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class ClawAction : MonoBehaviour
@@ -124,13 +125,12 @@ public class ClawAction : MonoBehaviour
 
 	public void OnProcessTrash () {
 
-		if (isTrash) {
+        if (isTrash && pickedGameObject != null) {
+            GameManager.instance.OnProcessTrash();
+            Destroy(pickedGameObject);
+        }
 
-			// TODO PICKUP TRASH
-			Debug.Log("Process Trash");
-		}
-
-	}
+    }
 
 	private void CheckIfLever (Collider2D collision) {
 		if (collision.CompareTag("Lever")) {
@@ -157,4 +157,8 @@ public class ClawAction : MonoBehaviour
 	private void ClearFloatingObjectRef () {
 		floatingObject = null;
 	}
+
+	public bool IsTrash { get { return isTrash; } }
+
+    public GameObject PickedGameObject { get { return pickedGameObject; } }
 }

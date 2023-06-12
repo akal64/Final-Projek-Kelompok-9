@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour
 
 		if (radiationProtection != null) {
 			radiationProtection.SetActive(false);
-		}
+			uiManager.OnRadiationProtectionPicked();
+        }
 
 	}
 
@@ -91,7 +92,13 @@ public class GameManager : MonoBehaviour
 
 	}
 
-	public void EnableController () {
+    public void OnProcessTrash() {
+        player.AddTrash();
+        int currentTrash = player.GetCurrentTrash();
+        uiManager.UpdateTrashCount(currentTrash);
+    }
+
+    public void EnableController () {
 		playerControl.EnableController();
 	}
 
