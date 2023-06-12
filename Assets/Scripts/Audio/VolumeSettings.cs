@@ -4,11 +4,21 @@ using UnityEngine.UI;
 
 public class VolumeSettings : MonoBehaviour
 {
+    public static VolumeSettings instance;
     [SerializeField] private AudioMixer Mixer;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider SFXSlider;
     [SerializeField] private Slider BGMSlider;
+    [SerializeField] public AudioSource bgm;
 
+    private void Awake() {
+        if (instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            bgm.Play();
+
+        }
+    }
     private void Start() {
         if (PlayerPrefs.HasKey("BGMVolume"))
             LoadVolume();

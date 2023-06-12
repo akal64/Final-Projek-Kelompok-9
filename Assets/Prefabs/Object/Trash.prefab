@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectRigidbody2D: {fileID: 3964476835289327926}
+  isOnUsingGravity: 0
+  isGravityObject: 0
+  objectState: 0
 --- !u!212 &3964476835289327924
 SpriteRenderer:
   m_ObjectHideFlags: 0

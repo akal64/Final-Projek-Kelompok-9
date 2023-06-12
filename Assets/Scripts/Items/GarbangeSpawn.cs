@@ -3,18 +3,8 @@ using UnityEngine.Tilemaps;
 
 public class GarbangeSpawn : MonoBehaviour
 {
-    public static GarbangeSpawn instance;
-    public Tilemap[] tilemaps; // Array dari Tilemap yang akan di-spawn
+     public Tilemap[] tilemaps; // Array dari Tilemap yang akan di-spawn
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-
-        }
-    }
     private void Start()
     {
         SpawnRandomTilemap();

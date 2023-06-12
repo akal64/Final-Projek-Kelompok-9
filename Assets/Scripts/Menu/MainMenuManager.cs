@@ -6,31 +6,37 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private SFXSoundController sound;
     [SerializeField] GameObject settingsPanel;
     [SerializeField] GameObject creditsPanel;
-
-    public void PlayButton() {
-        SceneManager.LoadScene("Main");
+    [SerializeField] SceneTransition sceneTransition;
+    public void PlayButton()
+    {
+        sceneTransition.LoadScene("Main");
     }
 
-    public void OptionButton() {
-        
+    public void OptionButton()
+    {
+
         settingsPanel.SetActive(true);
     }
 
-    public void CreditsButton() {
+    public void CreditsButton()
+    {
         if (creditsPanel.activeSelf) return;
         creditsPanel.SetActive(true);
     }
 
-    public void ExitButton() {
+    public void ExitButton()
+    {
         Application.Quit();
     }
 
-    public void ExitOptionButton() {
+    public void ExitOptionButton()
+    {
         sound.BackSound();
         settingsPanel.SetActive(false);
     }
 
-    public void ExitCreditsButton() {
+    public void ExitCreditsButton()
+    {
         sound.BackSound();
         creditsPanel.SetActive(false);
     }
