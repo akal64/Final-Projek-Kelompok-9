@@ -14,7 +14,7 @@ public class GameSceneManager : MonoBehaviour
 
 		bool isSceneLoaded = IsSceneLoaded(surfaceSceneName);
 
-		if (generateFirstLevel && !isSceneLoaded) {
+		if (generateFirstLevel && !isSceneLoaded && !SceneManager.GetSceneByName(surfaceSceneName).isLoaded) {
 			SceneManager.LoadScene(surfaceSceneName, LoadSceneMode.Additive);
 		}
 	}
