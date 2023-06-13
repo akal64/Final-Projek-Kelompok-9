@@ -6,30 +6,30 @@ public class SceneLoader : MonoBehaviour
 	[SerializeField] private int nextSceneBuildIndex;
 	public static bool load;
 
-	private void OnTriggerEnter2D (Collider2D collision) {
-		Check(collision);
-	}
-
 	private void OnTriggerStay2D (Collider2D collision) {
 		Check(collision);
 	}
 
-	private void OnTriggerExit2D (Collider2D collision) {
-		Check(collision);
-	}
 
 	private void Check (Collider2D collision) {
-		if (nextSceneBuildIndex != -1) {
-			if (collision.gameObject.name == "Player" && !SceneManager.GetSceneByBuildIndex(nextSceneBuildIndex).isLoaded) {
-
+		if (nextSceneBuildIndex != -1 && !SceneManager.GetSceneByBuildIndex(nextSceneBuildIndex).isLoaded) {
+			if (collision.gameObject.name == "Player") {
 				if (load) {
 					load = false;
 					return;
 				}
 
-				SceneManager.LoadScene(nextSceneBuildIndex, LoadSceneMode.Additive);
-				load = true;
+				LoadSceneAsync(nextSceneBuildIndex);
 			}
 		}
+	}
+
+	private void LoadSceneAsync (int sceneBuildIndex) {
+		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex, LoadSceneMode.Additive);
+		asyncLoad.completed += operation => {
+			SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneBuildIndex));
+		};
+
+		load = true;
 	}
 }
