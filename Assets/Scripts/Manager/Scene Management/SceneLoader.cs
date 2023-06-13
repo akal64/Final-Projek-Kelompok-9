@@ -6,7 +6,7 @@ public class SceneLoader : MonoBehaviour
 	[SerializeField] private int nextSceneBuildIndex;
 	public static bool load;
 
-	private void OnTriggerStay2D (Collider2D collision) {
+	private void OnTriggerEnter2D (Collider2D collision) {
 		Check(collision);
 	}
 

@@ -906,7 +906,7 @@ MonoBehaviour:
   isShouldActive: 0
   slidingDoor: {fileID: 332174936}
   moveRange: 5
-  moveSpeed: 1
+  moveSpeed: 5
   reverseDirection: 0
   moveHorizontal: 1
 --- !u!1 &858770556
@@ -3406,7 +3406,7 @@ MonoBehaviour:
   isShouldActive: 0
   slidingDoor: {fileID: 1563919397}
   moveRange: 7
-  moveSpeed: 1
+  moveSpeed: 5
   reverseDirection: 1
   moveHorizontal: 0
 --- !u!1 &1657910911
@@ -6394,7 +6394,7 @@ MonoBehaviour:
   isShouldActive: 0
   slidingDoor: {fileID: 1764313872}
   moveRange: 5
-  moveSpeed: 1
+  moveSpeed: 5
   reverseDirection: 1
   moveHorizontal: 0
 --- !u!1 &2114262007
