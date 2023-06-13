@@ -88,8 +88,8 @@ public class GameManager : MonoBehaviour
 		if (!isPlayerHasProtection) {
 			player.TakeDamage(damage);
 			uiManager.SetHealth(player.GetCurrentHealth());
+			CheckGameOver();
 		}
-
 	}
 
     public void OnProcessTrash() {
@@ -97,6 +97,17 @@ public class GameManager : MonoBehaviour
         int currentTrash = player.GetCurrentTrash();
         uiManager.UpdateTrashCount(currentTrash);
     }
+
+	private void CheckGameOver() {
+        if (player.GetCurrentHealth() <= 0) {
+            GameOver();
+        }
+    }
+
+	private void GameOver() {
+		uiManager.OnGameOver();
+		DisableController();
+	}
 
     public void EnableController () {
 		playerControl.EnableController();

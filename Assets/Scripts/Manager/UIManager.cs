@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider healthSlider;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject protectionIndicator;
     [SerializeField] private Slider trashSlider;
     [SerializeField] private TextMeshProUGUI trashCount;
@@ -34,6 +35,20 @@ public class UIManager : MonoBehaviour
         fill.color = gradient.Evaluate(healthSlider.normalizedValue);
     }
 
+    public void OnGameOver() {
+        gameOverPanel.SetActive(true);
+    }
+
+    public void UpdateTrashCount(int trashValue) {
+        trashSlider.value = trashValue;
+        trashCount.SetText(trashValue.ToString());
+    }
+
+    public void OnRadiationProtectionPicked() {
+        protectionIndicator.SetActive(true);
+    }
+
+    // button
     public void PauseButton() {
         if (pauseMenu.activeSelf) return;
         pauseMenu.SetActive(true);
@@ -56,14 +71,11 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void UpdateTrashCount(int trashValue) {
-        Debug.Log("Trash Added");
-        trashSlider.value = trashValue;
-        trashCount.SetText(trashValue.ToString());
+    public void RestartButton() {
+        SceneManager.LoadScene("Main");
     }
 
-    public void OnRadiationProtectionPicked() {
-        protectionIndicator.SetActive(true);
+    public void QuitBUtton() {
+        Application.Quit();
     }
-
 }
