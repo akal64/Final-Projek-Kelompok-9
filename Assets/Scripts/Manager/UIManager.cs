@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject protectionIndicator;
+    [SerializeField] public GameObject protectionIndicator;
     [SerializeField] private Slider trashSlider;
     [SerializeField] private TextMeshProUGUI trashCount;
 
@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     private void Awake() {
         fill = healthSlider.fillRect.GetComponent<Image>();
         gradient = new Gradient();
-        protectionIndicator.SetActive(false);
+        
     }
 
     public void SetMaxHealth(int health) {

@@ -23,23 +23,26 @@ public class GameManager : MonoBehaviour
 
 		if (instance == null) {
 			instance = this;
-		} else {
+		}
+		else {
 			Destroy(gameObject);
 		}
 
-		gameSceneManager.Initialize();
+        gameSceneManager.Initialize();
 
 		int checkRadiationItem = PlayerPrefs.GetInt("radiationProtection");
 
 		if (checkRadiationItem < 1) {
 			PlayerPrefs.SetInt("radiationProtection", 0);
 			radiationProtection.SetActive(true);
+            uiManager.protectionIndicator.SetActive(false);
 
-		} else if (checkRadiationItem == 1) {
+        } else if (checkRadiationItem == 1) {
 			isPlayerHasProtection = true;
 			radiationProtection.SetActive(false);
+            uiManager.protectionIndicator.SetActive(true);
 
-		}
+        }
 	}
 
 	private void Start () {
@@ -78,7 +81,6 @@ public class GameManager : MonoBehaviour
 
 		if (radiationProtection != null) {
 			radiationProtection.SetActive(false);
-			uiManager.OnRadiationProtectionPicked();
         }
 
 	}
