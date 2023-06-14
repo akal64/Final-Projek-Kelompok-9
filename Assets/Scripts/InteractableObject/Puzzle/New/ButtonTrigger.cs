@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class ButtonTrigger : ObjectTrigger
 {
+    private int collisionCount = 0;
 
-	public void Start () {
+    public void Start () {
 		objectType = PuzzleObjectType.Lever;
 	}
 
@@ -21,16 +22,21 @@ public class ButtonTrigger : ObjectTrigger
 	}
 
 	private void OnCollisionEnter2D (Collision2D collision) {
-		isActivated = true;
+        collisionCount++;
+        isActivated = true;
 		Activate();
 		objectState = PuzzleObjectState.Active;
 
 	}
 
 	private void OnCollisionExit2D (Collision2D collision) {
-		isActivated = false;
-		ShutDown();
-		objectState = PuzzleObjectState.Off;
+        collisionCount--;
+        if (collisionCount <= 0) {
+            isActivated = false;
+			ShutDown();
+			objectState = PuzzleObjectState.Off;
+			collisionCount= 0;
+		}
 
 	}
 
