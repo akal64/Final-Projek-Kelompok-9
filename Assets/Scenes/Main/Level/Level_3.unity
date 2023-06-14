@@ -4058,6 +4058,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8533230525640572092, guid: 801b89451cc06914e9e0c4e343614035, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8533230525640572093, guid: 801b89451cc06914e9e0c4e343614035, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4120,11 +4124,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8533230526414610958, guid: 801b89451cc06914e9e0c4e343614035, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.38268343
+      value: -0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 8533230526414610958, guid: 801b89451cc06914e9e0c4e343614035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 45
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 801b89451cc06914e9e0c4e343614035, type: 3}

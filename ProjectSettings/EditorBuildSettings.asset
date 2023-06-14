@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/Intro.unity
     guid: 64eae0021f9f7f645b00f8b0dc0edcec
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_Boss_Trench.unity
+    guid: fd038bdbb197ea94f88cd2669f5e3630
   m_configObjects: {}
