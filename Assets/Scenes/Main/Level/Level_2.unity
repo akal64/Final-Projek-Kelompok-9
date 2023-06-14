@@ -387,6 +387,10 @@ PrefabInstance:
       value: New Lever
       objectReference: {fileID: 0}
     - target: {fileID: 8533230525408334892, guid: 801b89451cc06914e9e0c4e343614035, type: 3}
+      propertyPath: isActivated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533230525408334892, guid: 801b89451cc06914e9e0c4e343614035, type: 3}
       propertyPath: objectActionList.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -633,11 +637,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2697597021843038541, guid: 110c1f1acd0cbbd4da62d3526f04122b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2697597021843038541, guid: 110c1f1acd0cbbd4da62d3526f04122b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -138
+      value: -152.3436
       objectReference: {fileID: 0}
     - target: {fileID: 2697597021843038541, guid: 110c1f1acd0cbbd4da62d3526f04122b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2557,7 +2561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -6356,11 +6360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443411, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.35
+      value: -28.59
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443411, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -64.5
+      value: -45.03
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443411, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6400,7 +6404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}

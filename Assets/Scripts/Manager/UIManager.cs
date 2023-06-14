@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject protectionIndicator;
     [SerializeField] private Slider trashSlider;
     [SerializeField] private TextMeshProUGUI trashCount;
+    [SerializeField] SceneTransition sceneTransition;
 
     private Gradient gradient;
     private Image fill;
@@ -68,7 +69,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void MainMenuButton() {
-        SceneManager.LoadScene("Main Menu");
+        sceneTransition.LoadScene("Main Menu");
     }
 
     public void RestartButton() {

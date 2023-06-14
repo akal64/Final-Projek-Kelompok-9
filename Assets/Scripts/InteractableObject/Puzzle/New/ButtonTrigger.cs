@@ -3,48 +3,59 @@ using UnityEngine;
 
 public class ButtonTrigger : ObjectTrigger
 {
-    private int collisionCount = 0;
+    public void Start()
+    {
+        objectType = PuzzleObjectType.Lever;
+    }
 
-    public void Start () {
-		objectType = PuzzleObjectType.Lever;
-	}
+    private void Update()
+    {
+        if (isActivated && objectState == PuzzleObjectState.Off)
+        {
 
-	private void Update () {
-		if (isActivated && objectState == PuzzleObjectState.Off) {
+            Activate();
 
-			Activate();
+        }
+        else if (!isActivated && objectState == PuzzleObjectState.Active)
+        {
 
-		} else if (!isActivated && objectState == PuzzleObjectState.Active) { 
-		
-			ShutDown();
+            ShutDown();
 
-		}
-	}
+        }
+    }
 
-	private void OnCollisionEnter2D (Collision2D collision) {
-        collisionCount++;
-        isActivated = true;
-		Activate();
-		objectState = PuzzleObjectState.Active;
+    private void OnCollisionStay2D(Collision2D other)
+    {
+            isActivated = true;
+            Activate();
+            objectState = PuzzleObjectState.Active;
+    }
+    // private void Oncollisions(Collision2D other)
+    // {
+    //     if (other.gameObject.tag == "Floating Object")
+    //     {
+    //         isActivated = true;
+    //         Activate();
+    //         objectState = PuzzleObjectState.Active;
 
-	}
+    //     }
 
-	private void OnCollisionExit2D (Collision2D collision) {
-        collisionCount--;
-        if (collisionCount <= 0) {
+    // }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
             isActivated = false;
-			ShutDown();
-			objectState = PuzzleObjectState.Off;
-			collisionCount= 0;
-		}
+            ShutDown();
+            objectState = PuzzleObjectState.Off;
+    }
 
-	}
+    private void Activate()
+    {
+        SetObjectActivationStatus(true);
+    }
 
-	private void Activate () {
-		SetObjectActivationStatus(true);
-	}
-
-	private void ShutDown () {
-		SetObjectActivationStatus(false);
-	}
+    private void ShutDown()
+    {
+        SetObjectActivationStatus(false);
+    }
 }
