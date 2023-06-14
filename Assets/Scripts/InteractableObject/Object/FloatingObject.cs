@@ -24,8 +24,13 @@ public class FloatingObject : MonoBehaviour
 
 	[SerializeField] private FloatingObjectState objectState;
 
+	private BoxCollider2D objectCollider;
+	private Vector2 originalObjectCollider;
+
 	private void Start () {
 		objectState = FloatingObjectState.Idle;
+        objectCollider = GetComponent<BoxCollider2D>();
+		originalObjectCollider = objectCollider.size;
 	}
 
 	private void FixedUpdate () {
@@ -85,33 +90,44 @@ public class FloatingObject : MonoBehaviour
 			SetKinematic(false);
 
 		}
+		AdjustColliderToSmall(false);
 	}
 
 	private void SetStateBeingCarried () {
 		SetKinematic(true);
 		isOnUsingGravity = false;
+		AdjustColliderToSmall(true);
 	}
 
 	private void SetStateBeingThrown () {
 		SetKinematic(false);
 		isOnUsingGravity = true;
+		AdjustColliderToSmall(false);
 	}
 
 	private void SetStateBeingDropped () {
 		if (isGravityObject) {
 			
 			SetKinematic(true);
-		
-		} else {
+
+        } else {
 			
 			SetKinematic(false);
-		
-		}
-	}
+
+        }
+        AdjustColliderToSmall(false);
+    }
 
 	private void SetKinematic (bool value) {
 		objectRigidbody2D.isKinematic = value;
 	}
+
+	private void AdjustColliderToSmall(bool value) {
+		if (value)
+            objectCollider.size = new Vector2(0.5f, 0.5f);
+        else
+			objectCollider.size = originalObjectCollider;
+    }
 
 }
 
