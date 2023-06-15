@@ -3,11 +3,6 @@ using UnityEngine;
 public class ClawAction : MonoBehaviour
 {
 
-	public System.Action ShowInteractUI;
-	public System.Action ShowPickUI;
-	public System.Action<bool> ShowTrashObjectActionUI;
-	public System.Action ResetClawUI;
-
 	// Inspector Variables
 
 	[Header("References")]
@@ -39,6 +34,18 @@ public class ClawAction : MonoBehaviour
 	// Events
 	public System.Action RadiationProtectionPicked;
 
+	public System.Action ShowInteractUI;
+	public System.Action ShowPickUI;
+	public System.Action<bool> ShowTrashObjectActionUI;
+	public System.Action ResetClawUI;
+
+
+	public bool IsTrash { get { return isTrash; } }
+
+	public GameObject PickedGameObject { get { return pickedGameObject; } }
+
+
+
 	public void Initialize () {
 		layerIndex = LayerMask.NameToLayer(layerName);
 		SetClawColliderContainer(false);
@@ -56,7 +63,9 @@ public class ClawAction : MonoBehaviour
 
 		} else {
 			isPickable = false;
-			ResetClawUI?.Invoke();
+			if (pickedGameObject is null) {
+				ResetClawUI?.Invoke();
+			}
 		}
 
 	}
@@ -136,6 +145,7 @@ public class ClawAction : MonoBehaviour
 			ClearFloatingObjectRef();
 
 			ResetClawUI?.Invoke();
+			Debug.Log("On Reset Dropped");
 		}
 	}
 
@@ -154,6 +164,7 @@ public class ClawAction : MonoBehaviour
 			ClearFloatingObjectRef();
 
 			ResetClawUI?.Invoke();
+			Debug.Log("On Reset Throw");
 		}
 	}
 
@@ -167,6 +178,7 @@ public class ClawAction : MonoBehaviour
             Destroy(pickedGameObject);
 
 			ResetClawUI?.Invoke();
+			Debug.Log("On Reset Process");
 		}
 
     }
@@ -208,7 +220,5 @@ public class ClawAction : MonoBehaviour
 		colliderPickUp.gameObject.SetActive(value);
 	}
 
-	public bool IsTrash { get { return isTrash; } }
 
-    public GameObject PickedGameObject { get { return pickedGameObject; } }
 }

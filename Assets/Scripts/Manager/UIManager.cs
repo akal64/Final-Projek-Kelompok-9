@@ -95,30 +95,25 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractUI () {
 		SetClawUI(true, false, false, false);
-        Debug.Log("Show Interact UI");
 	}
 
 	public void ShowPickUI () {
 		SetClawUI(false, true, false, false);
-		Debug.Log("Show Pick UI");
 	}
 
 	public void ShowTrashObjectActionUI (bool isTrash) {
 
         if (isTrash) {
 			SetClawUI(false, false, true, true);
-			Debug.Log("Is Trash UI");
 
 		} else {
 			SetClawUI(false, false, true, false);
-			Debug.Log("Not Trash UI");
 
 		}
     }
 
     public void ResetClawUI () {
         SetClawUI(false, false,false, false);
-		Debug.Log("Reset Claw UI");
 	}
 
     private void SetClawUI (bool interactUIValue, bool pickUIValue, bool objectActionValue, bool trashObjectValue) {
