@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
 
 		if (radiationProtection != null) {
 			radiationProtection.SetActive(false);
+            uiManager.OnRadiationProtectionPicked();
         }
 
 	}
