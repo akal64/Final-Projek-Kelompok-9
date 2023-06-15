@@ -5,14 +5,22 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+
+    [Header("Player UI")]
     [SerializeField] private Slider healthSlider;
+
+    [Header("Game UI")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] public GameObject protectionIndicator;
-    [SerializeField] private Slider trashSlider;
-    [SerializeField] private TextMeshProUGUI trashCount;
-    [SerializeField] SceneTransition sceneTransition;
+
+	[Header("GamePlay UI")]
+	[SerializeField] public GameObject protectionIndicator;
+	[SerializeField] private TextMeshProUGUI trashCount;
+	[SerializeField] private Slider trashSlider;
+	[SerializeField] SceneTransition sceneTransition;
+
+    [Header("Trash UI")]
     [SerializeField] private GameObject interactUI;
     [SerializeField] private GameObject pickUI;
     [SerializeField] private GameObject objectActionUI;
@@ -87,25 +95,30 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractUI () {
 		SetClawUI(true, false, false, false);
+        Debug.Log("Show Interact UI");
 	}
 
 	public void ShowPickUI () {
 		SetClawUI(false, true, false, false);
+		Debug.Log("Show Pick UI");
 	}
 
 	public void ShowTrashObjectActionUI (bool isTrash) {
 
         if (isTrash) {
 			SetClawUI(false, false, true, true);
+			Debug.Log("Is Trash UI");
 
 		} else {
 			SetClawUI(false, false, true, false);
+			Debug.Log("Not Trash UI");
 
 		}
     }
 
     public void ResetClawUI () {
         SetClawUI(false, false,false, false);
+		Debug.Log("Reset Claw UI");
 	}
 
     private void SetClawUI (bool interactUIValue, bool pickUIValue, bool objectActionValue, bool trashObjectValue) {

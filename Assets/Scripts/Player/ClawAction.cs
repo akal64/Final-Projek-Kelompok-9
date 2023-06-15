@@ -50,17 +50,27 @@ public class ClawAction : MonoBehaviour
 
 		if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex) {
 			isPickable = true;
-			ShowPickUI?.Invoke();
+			if (pickedGameObject is null) {
+				InvokePickUI();
+			}
 
 		} else {
 			isPickable = false;
+			ResetClawUI?.Invoke();
 		}
 
+	}
+
+	private void InvokePickUI () {
+		if (isPickable) {
+			ShowPickUI?.Invoke();
+		}
 	}
 
 	private void OnTriggerEnter2D (Collider2D collision) {
 		if (collision.CompareTag("RadiationProtection")) {
 			RadiationProtectionPicked?.Invoke();
+			ShowPickUI?.Invoke();
 		}
 		
 		CheckIfLever(collision);
@@ -70,13 +80,16 @@ public class ClawAction : MonoBehaviour
 	private void OnTriggerStay2D (Collider2D collision) {
 		
 		CheckIfLever(collision);
-		ResetClawUI?.Invoke();
 
 	}
 
 	private void OnTriggerExit2D (Collider2D collision) {
+		if (isLever) {
+			ResetClawUI?.Invoke();
+		}
 		isLever = false;
 		this.collision = null;
+
 	}
 
 	public void OnInteract () {
@@ -170,6 +183,7 @@ public class ClawAction : MonoBehaviour
 	private void CheckIfTrash () {
 
 		if (pickedGameObject != null && pickedGameObject.CompareTag(trashTag)) {
+			isPickable = true;
 			isTrash = true;
 			ShowTrashObjectActionUI?.Invoke(true);
 
@@ -183,6 +197,7 @@ public class ClawAction : MonoBehaviour
 	private void DetachFromClaw () {
 		pickedGameObject.transform.SetParent(null);
 		pickedGameObject = null;
+		
 	}
 
 	private void ClearFloatingObjectRef () {
