@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class cutscenetrigger : MonoBehaviour
+public class CutSceneTrigger : MonoBehaviour
 {
     [SerializeField] Animator player, boss, blackbar;
     [SerializeField] SceneTransition sceneTransition;

@@ -9,8 +9,6 @@ public class SceneTransition : MonoBehaviour
     public Image fadeImage;
     public float fadeSpeed = 1f;
 
-    private bool fadeIn = true;
-
     private void Start()
     {
         StartCoroutine(FadeOut());
@@ -24,7 +22,6 @@ public class SceneTransition : MonoBehaviour
     IEnumerator FadeIn(string sceneName)
     {
         fadeImage.gameObject.SetActive(true);
-        fadeIn = true;
 
         Color color = fadeImage.color;
         while (color.a < 1f)
@@ -40,7 +37,6 @@ public class SceneTransition : MonoBehaviour
     IEnumerator FadeOut()
     {
         fadeImage.gameObject.SetActive(true);
-        fadeIn = false;
 
         Color color = fadeImage.color;
         while (color.a > 0f)
