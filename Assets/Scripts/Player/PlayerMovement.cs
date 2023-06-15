@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float droneSpeed = 10f;
+    public float droneSpeed = 10f;
     [SerializeField] private float velocityTransitionSpeed = 5f;
 
     private bool isMoving = false;
