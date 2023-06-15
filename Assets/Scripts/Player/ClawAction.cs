@@ -5,6 +5,9 @@ public class ClawAction : MonoBehaviour
 
 	// Inspector Variables
 
+	[Header("References")]
+	[SerializeField] private GameObject colliderPickUp;
+
 	[Header("Raycast Settings")]
 	[SerializeField] private Transform rayPoint;
 	[SerializeField] private Transform grabPoint;
@@ -33,6 +36,7 @@ public class ClawAction : MonoBehaviour
 
 	public void Initialize () {
 		layerIndex = LayerMask.NameToLayer(layerName);
+		SetClawColliderContainer(false);
 	}
 
 	private void Update () {
@@ -90,8 +94,11 @@ public class ClawAction : MonoBehaviour
 
 			pickedGameObject.transform.position = grabPoint.position;
 			pickedGameObject.transform.SetParent(transform);
+			
 
 			CheckIfTrash();
+			SetClawColliderContainer(true);
+
 		}
 	}
 
@@ -99,6 +106,7 @@ public class ClawAction : MonoBehaviour
 	public void OnDropObject () {
 
 		if (pickedGameObject != null) {
+			SetClawColliderContainer(false);
 
 			floatingObject.SetFloatingObjectState(FloatingObjectState.BeingDropped);
 
@@ -111,6 +119,8 @@ public class ClawAction : MonoBehaviour
 	public void OnThrowObject () {
 
 		if (pickedGameObject != null) {
+
+			SetClawColliderContainer(false);
 
 			floatingObject.SetFloatingObjectState(FloatingObjectState.BeingThrown);
 
@@ -125,7 +135,10 @@ public class ClawAction : MonoBehaviour
 	public void OnProcessTrash () {
 
         if (isTrash && pickedGameObject != null) {
-            GameManager.instance.OnProcessTrash();
+
+			SetClawColliderContainer(false);
+
+			GameManager.instance.OnProcessTrash();
             Destroy(pickedGameObject);
         }
 
@@ -155,6 +168,10 @@ public class ClawAction : MonoBehaviour
 
 	private void ClearFloatingObjectRef () {
 		floatingObject = null;
+	}
+
+	private void SetClawColliderContainer(bool value) {
+		colliderPickUp.gameObject.SetActive(value);
 	}
 
 	public bool IsTrash { get { return isTrash; } }
