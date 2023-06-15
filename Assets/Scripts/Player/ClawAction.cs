@@ -22,6 +22,7 @@ public class ClawAction : MonoBehaviour
 	private bool isTrash = false;
 	private bool isPickable = false;
 	private bool isLever = false;
+	private bool isUIInteractShown = false;
 
 	// Unity Components References
 	private Collider2D collision;
@@ -29,7 +30,7 @@ public class ClawAction : MonoBehaviour
 
 	// Scripts and Objects References
 	private FloatingObject floatingObject;
-	private GameObject pickedGameObject;
+	[SerializeField] private GameObject pickedGameObject;
 
 	// Events
 	public System.Action RadiationProtectionPicked;
@@ -49,6 +50,7 @@ public class ClawAction : MonoBehaviour
 	public void Initialize () {
 		layerIndex = LayerMask.NameToLayer(layerName);
 		SetClawColliderContainer(false);
+		pickedGameObject = null;
 	}
 
 	private void Update () {
@@ -57,6 +59,7 @@ public class ClawAction : MonoBehaviour
 
 		if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex) {
 			isPickable = true;
+
 			if (pickedGameObject is null) {
 				InvokePickUI();
 			}
@@ -87,8 +90,10 @@ public class ClawAction : MonoBehaviour
 	}
 
 	private void OnTriggerStay2D (Collider2D collision) {
-		
-		CheckIfLever(collision);
+
+		if (collision.CompareTag("Lever") && !isUIInteractShown) {
+			CheckIfLever(collision);
+		}
 
 	}
 
@@ -96,7 +101,9 @@ public class ClawAction : MonoBehaviour
 		if (isLever) {
 			ResetClawUI?.Invoke();
 		}
+
 		isLever = false;
+		isUIInteractShown = false;
 		this.collision = null;
 
 	}
@@ -145,7 +152,6 @@ public class ClawAction : MonoBehaviour
 			ClearFloatingObjectRef();
 
 			ResetClawUI?.Invoke();
-			Debug.Log("On Reset Dropped");
 		}
 	}
 
@@ -164,7 +170,6 @@ public class ClawAction : MonoBehaviour
 			ClearFloatingObjectRef();
 
 			ResetClawUI?.Invoke();
-			Debug.Log("On Reset Throw");
 		}
 	}
 
@@ -178,17 +183,21 @@ public class ClawAction : MonoBehaviour
             Destroy(pickedGameObject);
 
 			ResetClawUI?.Invoke();
-			Debug.Log("On Reset Process");
+			pickedGameObject = null;
+
 		}
 
     }
 
 	private void CheckIfLever (Collider2D collision) {
 		if (collision.CompareTag("Lever")) {
+			if (!isUIInteractShown) {
+				ShowInteractUI?.Invoke();
+				isUIInteractShown = true;
+				Debug.Log("Kene");
+			}
 			isLever = true;
 			this.collision = collision;
-
-			ShowInteractUI?.Invoke();
 		}
 	}
 
@@ -219,6 +228,5 @@ public class ClawAction : MonoBehaviour
 	private void SetClawColliderContainer(bool value) {
 		colliderPickUp.gameObject.SetActive(value);
 	}
-
 
 }

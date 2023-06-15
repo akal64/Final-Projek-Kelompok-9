@@ -95,6 +95,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractUI () {
 		SetClawUI(true, false, false, false);
+        Debug.Log("OI");
 	}
 
 	public void ShowPickUI () {
@@ -106,7 +107,7 @@ public class UIManager : MonoBehaviour
         if (isTrash) {
 			SetClawUI(false, false, true, true);
 
-		} else {
+		} else if(!isTrash) {
 			SetClawUI(false, false, true, false);
 
 		}
@@ -119,7 +120,7 @@ public class UIManager : MonoBehaviour
     private void SetClawUI (bool interactUIValue, bool pickUIValue, bool objectActionValue, bool trashObjectValue) {
 		interactUI.gameObject.SetActive(interactUIValue);
 		pickUI.gameObject.SetActive(pickUIValue);
-        objectActionUI.gameObject.SetActive(trashObjectValue);
+        objectActionUI.gameObject.SetActive(objectActionValue);
 		trashActionUI.gameObject.SetActive(trashObjectValue);
 	}
 
