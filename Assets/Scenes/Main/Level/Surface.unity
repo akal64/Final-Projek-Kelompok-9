@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -6847,7 +6847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -6945,7 +6945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -7413,7 +7413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -7751,7 +7751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -8355,7 +8355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -8956,7 +8956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
@@ -9219,7 +9219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295519588050443415, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}
       propertyPath: m_GravityScale
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc534164f730f04caee4b6a40c6217c, type: 3}

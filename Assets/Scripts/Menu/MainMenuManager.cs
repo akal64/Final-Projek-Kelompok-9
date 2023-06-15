@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     public void PlayButton()
     {
         sceneTransition.LoadScene("Main");
+        PlayerPrefs.DeleteKey("radiationProtection");
     }
 
     public void OptionButton()
