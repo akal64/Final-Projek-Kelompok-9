@@ -3,6 +3,11 @@ using UnityEngine;
 public class ClawAction : MonoBehaviour
 {
 
+	public System.Action ShowInteractUI;
+	public System.Action ShowPickUI;
+	public System.Action<bool> ShowTrashObjectActionUI;
+	public System.Action ResetClawUI;
+
 	// Inspector Variables
 
 	[Header("References")]
@@ -45,6 +50,8 @@ public class ClawAction : MonoBehaviour
 
 		if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex) {
 			isPickable = true;
+			ShowPickUI?.Invoke();
+
 		} else {
 			isPickable = false;
 		}
@@ -63,6 +70,7 @@ public class ClawAction : MonoBehaviour
 	private void OnTriggerStay2D (Collider2D collision) {
 		
 		CheckIfLever(collision);
+		ResetClawUI?.Invoke();
 
 	}
 
@@ -113,6 +121,8 @@ public class ClawAction : MonoBehaviour
 			DetachFromClaw();		
 			CheckIfTrash();
 			ClearFloatingObjectRef();
+
+			ResetClawUI?.Invoke();
 		}
 	}
 
@@ -129,6 +139,8 @@ public class ClawAction : MonoBehaviour
 			DetachFromClaw();
 			CheckIfTrash();
 			ClearFloatingObjectRef();
+
+			ResetClawUI?.Invoke();
 		}
 	}
 
@@ -140,7 +152,9 @@ public class ClawAction : MonoBehaviour
 
 			GameManager.instance.OnProcessTrash();
             Destroy(pickedGameObject);
-        }
+
+			ResetClawUI?.Invoke();
+		}
 
     }
 
@@ -148,6 +162,8 @@ public class ClawAction : MonoBehaviour
 		if (collision.CompareTag("Lever")) {
 			isLever = true;
 			this.collision = collision;
+
+			ShowInteractUI?.Invoke();
 		}
 	}
 
@@ -155,8 +171,11 @@ public class ClawAction : MonoBehaviour
 
 		if (pickedGameObject != null && pickedGameObject.CompareTag(trashTag)) {
 			isTrash = true;
+			ShowTrashObjectActionUI?.Invoke(true);
+
 		} else {
 			isTrash = false;
+			ShowTrashObjectActionUI?.Invoke(false);
 		}
 
 	}

@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 			radiationProtection.SetActive(false);
             uiManager.protectionIndicator.SetActive(true);
 
-        }
+		}
 	}
 
 	private void Start () {
@@ -50,10 +50,15 @@ public class GameManager : MonoBehaviour
 		player.Initialize();
 		uiManager.SetMaxHealth(player.GetMaxHealth());
 		uiManager.SetHealth(player.GetCurrentHealth());
-	}
+
+}
 
 	private void OnEnable () {
 		clawAction.RadiationProtectionPicked += OnRadiationProtectionPicked;
+		clawAction.ShowInteractUI += uiManager.ShowInteractUI;
+		clawAction.ShowPickUI += uiManager.ShowPickUI;
+		clawAction.ShowTrashObjectActionUI += uiManager.ShowTrashObjectActionUI;
+		clawAction.ResetClawUI += uiManager.ResetClawUI;
 	}
 
 	private void Update () {

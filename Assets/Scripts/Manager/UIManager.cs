@@ -13,6 +13,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider trashSlider;
     [SerializeField] private TextMeshProUGUI trashCount;
     [SerializeField] SceneTransition sceneTransition;
+    [SerializeField] private GameObject interactUI;
+    [SerializeField] private GameObject pickUI;
+    [SerializeField] private GameObject objectActionUI;
+    [SerializeField] private GameObject trashActionUI;
+
 
     private Gradient gradient;
     private Image fill;
@@ -79,4 +84,35 @@ public class UIManager : MonoBehaviour
     public void QuitBUtton() {
         Application.Quit();
     }
+
+    public void ShowInteractUI () {
+		SetClawUI(true, false, false, false);
+	}
+
+	public void ShowPickUI () {
+		SetClawUI(false, true, false, false);
+	}
+
+	public void ShowTrashObjectActionUI (bool isTrash) {
+
+        if (isTrash) {
+			SetClawUI(false, false, true, true);
+
+		} else {
+			SetClawUI(false, false, true, false);
+
+		}
+    }
+
+    public void ResetClawUI () {
+        SetClawUI(false, false,false, false);
+	}
+
+    private void SetClawUI (bool interactUIValue, bool pickUIValue, bool objectActionValue, bool trashObjectValue) {
+		interactUI.gameObject.SetActive(interactUIValue);
+		pickUI.gameObject.SetActive(pickUIValue);
+        objectActionUI.gameObject.SetActive(trashObjectValue);
+		trashActionUI.gameObject.SetActive(trashObjectValue);
+	}
+
 }
