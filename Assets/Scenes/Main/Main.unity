@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6163,9 +6163,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9748,7 +9748,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -10026,10 +10026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc6ac7895c2ee244b98f5292c31d27c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1029555153}
-  boss: {fileID: 200915886}
-  blackbar: {fileID: 2001670414}
-  sceneTransition: {fileID: 1375756883}
 --- !u!1 &1938161260
 GameObject:
   m_ObjectHideFlags: 0
