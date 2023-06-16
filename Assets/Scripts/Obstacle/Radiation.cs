@@ -32,8 +32,6 @@ public class Radiation : MonoBehaviour
 		if (other.CompareTag("Player")) {
 			isPlayerInside = true;
 			damageTimer = 0f;
-
-			playerMovement.droneSpeed = 3f; // Slows down the droneSpeed in PlayerMovement
 		}
 	}
 
@@ -41,8 +39,6 @@ public class Radiation : MonoBehaviour
 		if (collision.CompareTag("Player")) {
 			isPlayerInside = false;
 			damageTimer = 0f;
-
-        	playerMovement.droneSpeed = 10f; // Restore the droneSpeed to its original value when player exits the radiation
 		}
 	}
 }
