@@ -10026,6 +10026,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc6ac7895c2ee244b98f5292c31d27c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1029555153}
+  boss: {fileID: 200915886}
+  blackbar: {fileID: 2001670414}
+  sceneTransition: {fileID: 1375756883}
 --- !u!1 &1938161260
 GameObject:
   m_ObjectHideFlags: 0
