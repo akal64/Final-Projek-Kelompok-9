@@ -3,6 +3,7 @@ using UnityEngine;
 public class ClawMovement : MonoBehaviour
 {
 	[SerializeField] private GameObject rotatorPoint;
+
 	private Vector3 mouseWorldPosition;
 
 	private void Update () {

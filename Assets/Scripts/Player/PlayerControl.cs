@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,13 +18,11 @@ public class PlayerControl : MonoBehaviour
 	private Vector3 mouseInputPosition;
 	private PlayerInputMap _playerInputMap;
 
-	public Action PauseClicked;
-
 	public void Initialize () {
 
 		// Input Map Settings
 		_playerInputMap = new PlayerInputMap();
-		_playerInputMap.Enable();
+		EnableController();
 
 		// Player Movement Subscribe
 		_playerInputMap.Gameplay.PlayerMovement.performed += ctx => OnPlayerMovement(ctx);
@@ -40,9 +37,6 @@ public class PlayerControl : MonoBehaviour
 		_playerInputMap.Gameplay.ThrowObject.performed += ctx => OnThrowObject();
 		_playerInputMap.Gameplay.DropObject.performed += ctx => OnDropObject();
 		_playerInputMap.Gameplay.ProcessTrash.performed += ctx => OnProcessTrash();
-
-		// Game Subscribe
-		_playerInputMap.Gameplay.Pause.performed += ctx => OnPause();
 
 
 		playerMovement.SetDroneRigidbody2D(droneRigidbody2D);
@@ -59,9 +53,6 @@ public class PlayerControl : MonoBehaviour
 
 	private void OnDisable () {
 
-		// Input Map Settings
-		_playerInputMap.Disable();
-
 		// Player Movement UnSubscribe
 		_playerInputMap.Gameplay.PlayerMovement.performed -= ctx => OnPlayerMovement(ctx);
 		_playerInputMap.Gameplay.PlayerMovement.canceled -= ctx => OnPlayerMovement(ctx);
@@ -76,8 +67,8 @@ public class PlayerControl : MonoBehaviour
 		_playerInputMap.Gameplay.DropObject.performed -= ctx => OnDropObject();
 		_playerInputMap.Gameplay.ProcessTrash.performed -= ctx => OnProcessTrash();
 
-		// Game UnSubscribe
-		_playerInputMap.Gameplay.Pause.performed -= ctx => OnPause();
+		// Input Map Settings
+		DisableController();
 	}
 
 	private void OnPlayerMovement (InputAction.CallbackContext ctx) {
@@ -94,7 +85,6 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	private void OnClawMovement (InputAction.CallbackContext ctx) {
-		// TODO Track Mouse Cursor Position
 
 		mouseInputPosition = ctx.ReadValue<Vector2>();
 
@@ -114,8 +104,6 @@ public class PlayerControl : MonoBehaviour
 	}
 
     private void OnInteract () {
-        // TODO Enable Interact UI
-
 		clawAction.OnInteract();
     }
 
@@ -135,10 +123,6 @@ public class PlayerControl : MonoBehaviour
 		clawAction.OnProcessTrash();
 	}
 
-	private void OnPause () {
-		PauseClicked.Invoke();
-	}
-
 	private void SetDroneMoveDirection(Vector2 direction) {
 		playerMovement.SetDirection(direction);
 	}
@@ -156,4 +140,13 @@ public class PlayerControl : MonoBehaviour
 		mouseWorldPosition.z = 0;
 
 	}
+
+	public void EnableController () {
+		_playerInputMap.Enable();
+	}
+
+	public void DisableController () {
+		_playerInputMap.Disable();
+	}
+
 }

@@ -10,6 +10,8 @@ TagManager:
   - Button
   - Trash
   - Floating Object
+  - RadiationProtection
+  - Lever
   layers:
   - Default
   - TransparentFX
@@ -23,7 +25,7 @@ TagManager:
   - Interactable
   - Loader
   - PickedObject
-  - 
+  - MiniMap
   - 
   - 
   - 

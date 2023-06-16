@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class followObjectUI : MonoBehaviour
+public class FollowObjectUI : MonoBehaviour
 {
-    public Transform targetObject;
+    private Transform targetObject;
 
     void Update() {
+
         if (targetObject != null) {
             Vector3 targetPosition = targetObject.transform.position;
             Vector3 screenPosition = Camera.main.WorldToViewportPoint(targetPosition);
             transform.position = screenPosition;
         }
+
     }
 }

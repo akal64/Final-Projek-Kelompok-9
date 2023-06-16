@@ -5,10 +5,67 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Main/Main Menu.unity
+    guid: 6bd329bb3df2c7d42af162e8a039cfda
   - enabled: 1
     path: Assets/Scenes/Main/Main.unity
-    guid: 5f632d0c63bfdaf48a1b370a1e1c46aa
+    guid: 0b6d60c8345600941b1073033ec0dff2
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Surface.unity
+    guid: 39e347039c909504fa679246d90e867f
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Level_1.unity
+    guid: 57285ac6f04804b4daa654c848fb2341
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Level_2.unity
+    guid: da8fc7919d3afae45b9c96ea0132b665
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Level_3.unity
+    guid: a6c41d2258bf1a6408af3544afe9a6a4
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Level_4.unity
+    guid: 5daa80b10cc01c04bbb2e4716bba04a3
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Hub.unity
+    guid: 10cce4a816b82b642834b923c93b805c
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Trench.unity
+    guid: 434bec9590dfc6d4eb1af27c8964f898
+  - enabled: 1
+    path: Assets/Scenes/Main/Level/Level_Boss.unity
+    guid: 9a042470e2ead7d4cb86b433bcab2b13
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_1_2.unity
+    guid: 56484dc4e81c6f643bb1da4351407223
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_1_4.unity
+    guid: 9ba8e9195a6d2a0448f6b0053f8615dd
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_2_Hub.unity
+    guid: e28fa0b52e6540345ad0ea85f03cdafb
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_3_Hub.unity
+    guid: 2b0f0bd0fd50b934fa2f0f659b07f50e
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_3_Trench.unity
+    guid: 3afc1f587d7184f4ea7b45a604486a26
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_4_Trench.unity
+    guid: da912f2b0c199e44b89e90068eb848f9
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_Surface_1.unity
+    guid: 4a8a22130b87975479ff3f356f8f3aaa
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_Surface_3.unity
+    guid: d90dd5fa0d6136049ac282ea538f8561
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_Surface_Trench.unity
+    guid: 12b5d72f2d6054c40b15d62352858b9f
+  - enabled: 1
+    path: Assets/Scenes/Main/Intro.unity
+    guid: 64eae0021f9f7f645b00f8b0dc0edcec
+  - enabled: 1
+    path: Assets/Scenes/Main/Bridge/Bridge_Boss_Trench.unity
+    guid: fd038bdbb197ea94f88cd2669f5e3630
   m_configObjects: {}
